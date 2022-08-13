@@ -21,6 +21,17 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true })) 
 app.use(express.json()) 
 
+//routes
+app.get('/',async (request, response)=>{  
+    const todoItems = await db.collection('test').find().toArray() 
+    response.render('index.ejs', { items: todoItems, left: itemsLeft }) 
+    .catch(error => console.error(error))
+})
+
+
+
+
+
 
 app.listen(process.env.PORT || PORT, ()=>{ 
     console.log(`Server running on port ${PORT}`)

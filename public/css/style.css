@@ -1,0 +1,139 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+    box-sizing: border-box;
+  }
+  
+  body{
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0,0,0,.8)
+  }
+  /******************************************
+  /* LAYOUT
+  /*******************************************/
+  header{
+    height: 4rem;
+    background: #343A40;
+    color: lightgrey;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+  }
+  
+  header a:hover{
+    color: #f8f9fa;
+  }
+  
+  header li {
+    padding-left: 1rem;
+  }
+  
+  main{
+    padding: 5%;
+    background: #E9ECEF;
+  }
+  
+  .instructions{
+    padding: 4%;
+    border-top: 1px solid #E9ECEF;
+  
+  }
+  h1{
+    font-size: 4rem;
+    font-weight: 300;
+    padding-top: .8rem;
+  }
+  
+  h5{
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  
+  .flex{
+    display: flex;
+  }
+  
+  .flexCenter{
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .directions{
+    display: block;
+    text-align: center;
+    margin: 1rem auto 0 auto;
+  }
+  
+  .schedule section {
+    padding: 0 .5rem;
+  }
+  }
+  /******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul{
+    list-style: none;
+  }
+  
+  .navLink{
+    text-decoration: none;
+    color: lightgrey;
+  }
+  
+  h4{
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+  
+  .center{
+    text-align: center;
+  }
+  
+  .schedule{
+    margin: 4% 0;
+  }
+  
+  .day{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    margin-top: 1rem;
+    padding: .3rem;
+    border-radius: 10px;
+    background-color: #B8D7B5;
+    height: 3rem;
+  } 
+  
+  .day:hover {
+    cursor: pointer;
+    color: rgba(0,0,0,1)
+  }
+  
+  .open{
+    background: #B8D7B5;
+  }
+  
+  main p{
+    padding-top: 1rem;
+  }
+  
+  .instructions p{
+    margin: 0;
+  }
+  
+  .button{
+    border: 1px solid rgba(0,0,0,.8);
+    border-radius: 3px;
+    padding: .3rem;
+    cursor: pointer;
+    width: 5rem;
+  }

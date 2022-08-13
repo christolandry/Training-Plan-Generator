@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- import font from Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,700&display=swap" rel="stylesheet">
+
+    <!-- external CSS link -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Scheduling</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="flex">
+      <nav>
+        <ul class="flex">
+          <li><a href="index.html" class ="navLink">Home</a></li>
+          <li><a href="lingo.html" class ="navLink">Lingo</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!-- Jumbotron area -->
+    <main>
+      <h1>Create Your Schedule</h1>
+      <p>Follow the prompts to design your personal weekly running schedule</p>
+    </main>
+                       
+    <!-- Scheduling portion -->   
+    <section class="flex flexCenter schedule">
+      <section class="center">
+        <h4>Monday</h4>
+        <span class="day" id="day0">Open</span>
+      </section>
+      <section class="center">
+        <h4>Tuesday</h4>
+        <span class="day" id="day1">Open</span>
+      </section>
+      <section class="center">
+        <h4>Wednesday</h4>
+        <span class="day" id="day2">Open</span>
+      </section>
+      <section class="center">
+        <h4>Thursday</h4>
+        <span class="day" id="day3">Open</span>
+      </section>
+      <section class="center">
+        <h4>Friday</h4>
+        <span class="day" id="day4">Open</span>
+      </section>
+      <section class="center">
+        <h4>Saturday</h4>
+        <span class="day" id="day5">Open</span>
+      </section>
+      <section class="center">
+        <h4>Sunday</h4>
+        <span class="day" id="day6">Open</span>
+      </section>
+    </section>
+
+    <!-- This is where the instructions are printed with JS -->
+    <section class="instructions">
+      <p id="question" class="directions">
+        How many days do you want to run?
+      </p>
+      <select name="daysOfRunning" id="daysOfRunning" class="directions">
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <span class="button directions" id="submitDays">Submit</span>
+    </section>  
+        
+    <!-- Distance are you training for? -->
+    <section class="distance center">
+      <p>
+        What distance are you training for?
+      </p>
+      <select name="daysOfRunning" id="daysOfRunning" class="directions">
+        <option value="26" selected>Marathon</option>
+        <option value="13">Half Marathon</option>
+        <option value="6">10km</option>
+        <option value="3">5km</option>
+      </select>
+    </section>
+
+    <!-- How long is the training program? -->
+    <section class="distance center">
+      <p>
+        How long is the training program?
+      </p>
+      <select name="daysOfRunning" id="daysOfRunning" class="directions">
+        <option value="12" selected>12 weeks</option>
+        <option value="16">16 weeks</option>
+        <option value="20">20 weeks</option>
+      </select>
+    </section>
+
+    <!-- Max Miles -->
+    <section class="distance center">
+      <p>
+        How long do you want the longest week of the training plan?
+      </p>
+      <select name="daysOfRunning" id="daysOfRunning" class="directions">
+        <option value="12" selected>12 weeks</option>
+        <option value="16">16 weeks</option>
+        <option value="20">20 weeks</option>
+      </select>
+    </section>
+
+    <!-- What do you want your longest week of mileage to be. -->
+
+
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
