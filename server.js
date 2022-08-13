@@ -14,3 +14,14 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
+
+//middleware
+app.set('view engine', 'ejs') 
+app.use(express.static('public')) 
+app.use(express.urlencoded({ extended: true })) 
+app.use(express.json()) 
+
+
+app.listen(process.env.PORT || PORT, ()=>{ 
+    console.log(`Server running on port ${PORT}`)
+})
