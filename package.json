@@ -1,0 +1,20 @@
+{
+  "name": "training-plan-generator",
+  "version": "1.0.0",
+  "description": "Create running training plans based on user input automatically.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christolandry/Training-Plan-Generator.git"
+  },
+  "author": "Christo Landry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christolandry/Training-Plan-Generator/issues"
+  },
+  "homepage": "https://github.com/christolandry/Training-Plan-Generator#readme"
+}
