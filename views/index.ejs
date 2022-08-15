@@ -18,7 +18,7 @@
     <header class="flex">
       <nav>
         <ul class="flex">
-          <li><a href="index.html" class ="navLink">Home</a></li>
+          <li><a href="/" class ="navLink">Home</a></li>
           <li><a href="lingo.html" class ="navLink">Lingo</a></li>
         </ul>
       </nav>
@@ -62,11 +62,10 @@
       </section>
     </section>
 
+
     <!-- This is where the instructions are printed with JS -->
     <section class="instructions">
-      <p id="question" class="directions">
-        How many days do you want to run?
-      </p>
+      <label for= "daysOfRunning" id="question" class="directions">How many days do you want to run?</label>
       <select name="daysOfRunning" id="daysOfRunning" class="directions">
         <option value="4">4</option>
         <option value="5" selected>5</option>
@@ -76,46 +75,36 @@
       <span class="button directions" id="submitDays">Submit</span>
     </section>  
         
-    <!-- Distance are you training for? -->
-    <section class="distance center">
-      <p>
-        What distance are you training for?
-      </p>
-      <select name="daysOfRunning" id="daysOfRunning" class="directions">
-        <option value="26" selected>Marathon</option>
-        <option value="13">Half Marathon</option>
-        <option value="6">10km</option>
-        <option value="3">5km</option>
-      </select>
-    </section>
+    <!-- Runner's Inputs -->
+    <form action="/generatePlan" method="POST">
+        <!-- Distance are you training for? -->
+        <label for="goalDistance" class="directions">What distance are you training for</label>
+        <select name="goalDistance" id="goalDistance" class="directions">
+            <option value="26" selected>Marathon</option>
+            <option value="13">Half Marathon</option>
+            <option value="6">10km</option>
+            <option value="3">5km</option>
+        </select>
+        <!-- How long is the training program? -->
+        <label for="planDuration" class="directions">What is the duration of the training plan?</label>
+        <select name="planDuration" id="planDuration" class="directions">
+            <option value="12" selected>12 weeks</option>
+            <option value="16">16 weeks</option>
+            <option value="20">20 weeks</option>
+        </select>
+        <!-- What do you want your longest week of mileage to be. -->
+        <label for="maxMileage" class="directions">What is the highest weekly mileage total you are looking to hit?</label>
+        <input type="number" id="maxMileage" name="maxMileage" min="5" max="150" class="directions">
+        <!-- Longest Long Run -->
+        <label for="maxLR" class="directions">How long do you want your longest long run to be?</label>
+        <input type="number" id="maxLR" name="maxLR" min="5" max="30" class="directions">
 
-    <!-- How long is the training program? -->
-    <section class="distance center">
-      <p>
-        How long is the training program?
-      </p>
-      <select name="daysOfRunning" id="daysOfRunning" class="directions">
-        <option value="12" selected>12 weeks</option>
-        <option value="16">16 weeks</option>
-        <option value="20">20 weeks</option>
-      </select>
-    </section>
+        <input type="submit" class="directions">
+    </form>
 
-    <!-- Max Miles -->
-    <section class="distance center">
-      <p>
-        How long do you want the longest week of the training plan?
-      </p>
-      <select name="daysOfRunning" id="daysOfRunning" class="directions">
-        <option value="12" selected>12 weeks</option>
-        <option value="16">16 weeks</option>
-        <option value="20">20 weeks</option>
-      </select>
-    </section>
-
-    <!-- What do you want your longest week of mileage to be. -->
-
-
-    <script type="text/javascript" src="js/main.js"></script>
+    <footer>
+        
+    </footer>
+    <script type="text/javascript" src="js/scheduler.js"></script>
   </body>
 </html>

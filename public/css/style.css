@@ -70,7 +70,7 @@
   .schedule section {
     padding: 0 .5rem;
   }
-  }
+  
   /******************************************
   /* ADDITIONAL STYLES
   /*******************************************/
@@ -136,4 +136,10 @@
     padding: .3rem;
     cursor: pointer;
     width: 5rem;
+  }
+
+  footer{
+    
+    padding-top: 100px;
+    
   }
