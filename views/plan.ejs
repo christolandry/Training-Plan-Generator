@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- import font from Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,700&display=swap" rel="stylesheet">
+
+    <!-- external CSS link -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Scheduling</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="flex">
+      <nav>
+        <ul class="flex">
+          <li><a href="/" class ="navLink">Home</a></li>
+          <li><a href="lingo.html" class ="navLink">Lingo</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!-- Jumbotron area -->
+    <main>
+      <h1>Your Custom Running Plan</h1>
+      <!-- <p>Follow the prompts to design your personal weekly running schedule</p> -->
+    </main>
+    <section>
+      <ul class="">
+        <% for(let i = 0; i < longRuns.length; i++){%>
+          <li class="">
+            <span>Week <%= i %>: <%= longRuns[i] %></span><!--inserts todo list item-->      
+          </li>
+        <% } %>
+      </ul>              
+    </section>
+    <footer>
+        
+    </footer>
+  
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+  </body>
+</html>
