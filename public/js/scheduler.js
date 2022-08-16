@@ -215,7 +215,6 @@ function setSecondaryLongRun(i){
 }
 
 function prepareMR(i){
-    console.log("check prep MR")
     //Directions Change
     changeDirections(4);
     //Set all non-taken days closed
@@ -227,7 +226,6 @@ function prepareMR(i){
 }
 
 function setMR(i, strides = true){
-    console.log("check MR")
     if(days[i].innerHTML == 'Open') {
         //Set day as regular run and color it
         strides ? changeBlock(i, '87CEFA', 'Regular Run & Strides') : changeBlock(i, '87CEFA', 'Regular Run');
@@ -257,9 +255,7 @@ function changeBlock(day, color, text) {
 
 function closeAll(taken) {
     for (let k = 0; k < 7; k++) {
-        if (taken[k] == 0) {
-            changeBlock(k, 'f9e6e6', 'Not this day');
-        }
+        if (taken[k] == 0) changeBlock(k, 'f9e6e6', 'Not this day');
     }
 }
 
@@ -271,11 +267,7 @@ function openMultiple(taken) {
             changed = true; 
         }
     }
-    console.log("check 1")
-    if (changed){
-        return changed;
-    }
-    console.log("check 2")
+    if (changed) return changed;
     for (let k = 0; k < 7; k++) {
         if (taken[k] == 0 && taken[((k + 1) % 7)] == 0) {
             changeBlock(k, 'b8d7b5', 'Open');
@@ -295,7 +287,6 @@ function openAll(taken) {
 }
 
 function openSecondaryLongRun(taken){
-    console.log(longRun);
     let changed = false;
     for (let k = 0; k < 7; k++){
         //Open all days that are not nex to the long run or sandwiched between the two workouts
@@ -306,7 +297,7 @@ function openSecondaryLongRun(taken){
     }
 }
 
-function restAll(take) {
+function restAll() {
     for (let k = 0; k < 7; k++) {
         if (taken[k] == 0) {
             changeBlock(k, 'CDF0F7', 'Rest Day');
@@ -316,5 +307,14 @@ function restAll(take) {
 }
 
 function passInfoToServer(){
+    var hiddenValue = document.getElementById("weekLR")
+    week = {
+        longRun: longRun,
+        secondaryLongRun: slr,
+        primaryWorkout: pwo,
+        secondaryWorkout: swo,
+    }
     
+    hiddenValue.value = week
+    console.log("++++++++++++++++++++++++++++++")
 }

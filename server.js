@@ -35,7 +35,9 @@ app.post('/generatePlan', (request, response) =>{
 
         let LR = generateLongRuns(planDuration, goalDistance, maxLR)
         
-        
+        const hello = request.body.weekLR
+        console.log(`hello: ${hello}`)
+
         
 
 
