@@ -35,15 +35,16 @@ app.post('/generatePlan', (request, response) =>{
 
         let LR = generateLongRuns(planDuration, goalDistance, maxLR)
         
-        const hello = request.body.weekLR
-        console.log(`hello: ${hello}`)
-
         
+        const week = JSON.parse(request.body.weekSchedule)
+        for (key in week){
+            console.log(`${key}: ${week[key]}`)
+        }
 
 
 
 
-        response.render('plan.ejs', {distance: goalDistance, longRuns: LR})
+        response.render('plan.ejs', {distance: goalDistance, longRuns: LR, week: week})
     }catch(error){
         console.log(error)
     }
@@ -72,7 +73,6 @@ function generateLongRuns(duration, race, maxLR){
         longRuns[2] = longRuns[3]-2
         longRuns[1] = longRuns[2]-2
         longRuns[0] = longRuns[1]-2
-        console.log("hello")
     }
     console.log(`longruns: ${longRuns}`)
     console.log(`length: ${longRuns.length}`)

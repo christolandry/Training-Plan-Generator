@@ -2,6 +2,7 @@
 
 let step = 0, longRun = 0, slr = 0, pwo = 0, swo = 0; runningDays = 0;
 let taken = [0,0,0,0,0,0,0];
+let week = {}
 let days = document.querySelectorAll('.day');
 let directions = [
     "To start off, choose which day of the week you want to be your long run day.",
@@ -148,6 +149,7 @@ function setlongRun(i){
     //Add this day to the taken array, increment step and print the next directions
     increment(i);
     longRun = i;
+    week[i] = "longRun"
 }
 
 function preparePWO(i){
@@ -165,6 +167,7 @@ function setPWO(i){
             //Add this day to the taken array, increment step and print the next directions
             increment(i);
             pwo = i;
+            week[i] = "primaryWorkout"
             return(true)
         }
     return(false)
@@ -188,6 +191,7 @@ function setSWO(i){
         //Add this day to the taken array, increment step and print the next directions
         increment(i);
         swo = i;
+        week[i] = "secondaryWorkout"
         return true
     }
     return false
@@ -209,6 +213,7 @@ function setSecondaryLongRun(i){
         //Add this day to the taken array and increment step. 
         increment(i);
         slr = 1;
+        week[i] = "secondaryLongRun"
         return true
     }
     return false
@@ -232,6 +237,7 @@ function setMR(i, strides = true){
         //Add this day to the taken array and increment step. 
         increment(i);
         openAll(taken);
+        week[i] = strides ? "maintenanceRunStrides" : "maintenanceRun"
         return true;
     }
     return false
@@ -301,20 +307,14 @@ function restAll() {
     for (let k = 0; k < 7; k++) {
         if (taken[k] == 0) {
             changeBlock(k, 'CDF0F7', 'Rest Day');
+            week[k] = "rest"
         }
     }
     changeDirections(5);
 }
 
 function passInfoToServer(){
-    var hiddenValue = document.getElementById("weekLR")
-    week = {
-        longRun: longRun,
-        secondaryLongRun: slr,
-        primaryWorkout: pwo,
-        secondaryWorkout: swo,
-    }
-    
-    hiddenValue.value = week
-    console.log("++++++++++++++++++++++++++++++")
+    let weekSchedule = document.getElementById("weekSchedule")
+    weekSchedule.value = JSON.stringify(week)
+    console.log(week)
 }
