@@ -67,10 +67,10 @@
     <section class="instructions">
       <label for= "daysOfRunning" id="question" class="directions">How many days do you want to run?</label>
       <select name="daysOfRunning" id="daysOfRunning" class="directions">
-        <option value="4">4</option>
+        <!-- <option value="4">4</option> -->
         <option value="5" selected>5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
+        <!-- <option value="6">6</option> -->
+        <!-- <option value="7">7</option> -->
       </select>
       <span class="button directions" id="submitDays">Submit</span>
     </section>  
@@ -81,23 +81,30 @@
         <label for="goalDistance" class="directions">What distance are you training for</label>
         <select name="goalDistance" id="goalDistance" class="directions">
             <option value="26" selected>Marathon</option>
-            <option value="13">Half Marathon</option>
+            <!-- <option value="13">Half Marathon</option>
             <option value="6">10km</option>
-            <option value="3">5km</option>
+            <option value="3">5km</option> -->
         </select>
         <!-- How long is the training program? -->
         <label for="planDuration" class="directions">What is the duration of the training plan?</label>
         <select name="planDuration" id="planDuration" class="directions">
-            <option value="12" selected>12 weeks</option>
-            <option value="16">16 weeks</option>
-            <option value="20">20 weeks</option>
+            <!-- <option value="12">12 weeks</option> -->
+            <option value="16" selected>16 weeks</option>
+            <!-- <option value="20">20 weeks</option> -->
         </select>
         <!-- What do you want your longest week of mileage to be. -->
         <label for="maxMileage" class="directions">What is the highest weekly mileage total you are looking to hit?</label>
-        <input type="number" id="maxMileage" name="maxMileage" min="5" max="150" class="directions">
+        <input type="number" id="maxMileage" name="maxMileage" min="5" max="150" class="directions" value = 50>
         <!-- Longest Long Run -->
         <label for="maxLR" class="directions">How long do you want your longest long run to be?</label>
-        <input type="number" id="maxLR" name="maxLR" min="5" max="30" class="directions">
+        <input type="number" id="maxLR" name="maxLR" min="20" max="30" class="directions" value="20">
+
+        <label class="directions">What is your normal running pace (min/sec per mile)</label>
+        <label for="minutes" class="directions">Minutes</label>
+        <input type="number" id="minutes" name="minutes" min="5" max="30" class="directions" value ="7">
+        <label for="seconds" class="directions">Seconds</label>
+        
+        <input type="number" id="seconds" name="seconds" min="0" max="59" class="directions" value = "30">
 
         <input type="hidden" id="weekSchedule" name = "weekSchedule">
 

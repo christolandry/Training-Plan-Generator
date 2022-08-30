@@ -315,6 +315,7 @@ function restAll() {
 
 function passInfoToServer(){
     let weekSchedule = document.getElementById("weekSchedule")
+    week.runningDays = runningDays
     weekSchedule.value = JSON.stringify(week)
     console.log(week)
 }

@@ -30,14 +30,37 @@
       <!-- <p>Follow the prompts to design your personal weekly running schedule</p> -->
     </main>
     <section>
-      <ul class="">
-        <% for(let i = 0; i < longRuns.length; i++){%>
-          <li class="">
-            <span>Week <%= i %>: <%= longRuns[i] %></span><!--inserts todo list item-->      
-          </li>
+
+
+      <table class="schedule">
+        <tr>
+          <th></th>          
+          <th>Monday</th>          
+          <th>Tuesday</th>          
+          <th>Wednesday</th>        
+          <th>Thursday</th>          
+          <th>Friday</th>          
+          <th>Saturday</th>          
+          <th>Sunday</th>          
+          <th>Totals</th>
+          <th>Warm Up</th>
+          <th>Cool Down</th>
+        </tr>
+
+        <% for(let week = 0; week < weeklySchedule.length; week++){ %>
+          <tr>
+            <th>Week: <%= week + 1 %></th>
+            <% for(let day = 0; day < 7; day++){ %>
+              <th><%= weeklySchedule[week][day].join(" ") %></th>
+            <% } %>
+            <th><%= weeklyTotals[week] %> Miles</th>
+            <th><%= mileage[week][2] %></th>
+            <th><%= mileage[week][3] %></th>
+          </tr>
         <% } %>
-      </ul>   
-      Week: <%= week[1] %>          
+        
+      </table>
+         
     </section>
     <footer>
         
