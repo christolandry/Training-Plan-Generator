@@ -29,7 +29,6 @@ app.use(express.json())
 //routes
 app.get('/',async (request, response)=>{  
     response.render('index.ejs') 
-    .catch(error => console.error(error))
 })
 
 app.post('/generatePlan', (request, response) =>{
