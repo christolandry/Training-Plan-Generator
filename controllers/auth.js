@@ -1,39 +1,48 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const TrainingPlan = require("../models/TrainingPlan");
 
- exports.getLogin = (req, res) => {
-    if (req.user) {
-      return res.redirect('/')
+  exports.getLogin = async (req, res) => {
+    try{
+      if(req.user) return await TrainingPlan.findOne({userId: req.user.id}) ? res.redirect('/calendar') : res.redirect('/')
+      res.render('login', {
+        title: 'Login'
+      })
+    }catch(error){
+      console.log(error)
     }
-    res.render('login', {
-      title: 'Login'
-    })
   }
   
-  exports.postLogin = (req, res, next) => {
-    const validationErrors = []
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
-    if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
-  
-    if (validationErrors.length) {
-      req.flash('errors', validationErrors)
-      return res.redirect('/login')
-    }
-    req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  
-    passport.authenticate('local', (err, user, info) => {
-      if (err) { return next(err) }
-      if (!user) {
-        req.flash('errors', info)
+  exports.postLogin = async (req, res, next) => {
+      const validationErrors = []
+      if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
+      if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
+    
+      if (validationErrors.length) {
+        req.flash('errors', validationErrors)
         return res.redirect('/login')
       }
-      req.logIn(user, (err) => {
+      req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+    
+      passport.authenticate('local', (err, user, info) => {
         if (err) { return next(err) }
-        req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/')
-      })
-    })(req, res, next)
+        if (!user) {
+          req.flash('errors', info)
+          return res.redirect('/login')
+        }
+        console.log("break 1")
+        req.logIn(user, async (err) => {
+          try{
+          if (err) { return next(err) }
+          req.flash('success', { msg: 'Success! You are logged in.' })
+          res.redirect(req.session.returnTo || await TrainingPlan.findOne({userId: req.user.id}) ? '/calendar' : '/')
+          } catch(error){
+            console.log(error)
+          }
+        })
+      })(req, res, next)
+    
   }
   
   exports.logout = (req, res) => {
@@ -47,13 +56,15 @@ const User = require('../models/User')
     })
   }
   
-  exports.getSignup = (req, res) => {
-    if (req.user) {
-      return res.redirect('/')
+  exports.getSignup = async (req, res) => {
+    try{
+      if(req.user) return await TrainingPlan.findOne({userId: req.user.id}) ? res.redirect('/calendar') : res.redirect('/')
+      res.render('signup', {
+        title: 'Create Account'
+      })
+    }catch(error){
+      console.log(error)
     }
-    res.render('signup', {
-      title: 'Create Account'
-    })
   }
   
   exports.postSignup = (req, res, next) => {

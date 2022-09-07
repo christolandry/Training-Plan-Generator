@@ -4,12 +4,14 @@ const User = require("../models/User");
 module.exports = {
     getCalendar: async (request, response) => {
         try{
-            
-            console.log(`UserId: ${request.user.id} `)
             const userTrainingPlan = await TrainingPlan.findOne({userId: request.user.id})
-            console.log(userTrainingPlan)
-            console.log(userTrainingPlan.mileage)
-            response.render('plan.ejs', {distance: userTrainingPlan.distance, weeklySchedule: userTrainingPlan.weeklySchedule, weeklyTotals: userTrainingPlan.weeklyTotals, mileage: userTrainingPlan.mileage})
+            // response.render('calendar.ejs', {distance: userTrainingPlan.distance, weeklySchedule: userTrainingPlan.weeklySchedule, weeklyTotals: userTrainingPlan.weeklyTotals, mileage: userTrainingPlan.mileage})
+            response.render('plan.ejs', {
+                distance: userTrainingPlan.distance, 
+                weeklySchedule: userTrainingPlan.weeklySchedule, 
+                weeklyTotals: userTrainingPlan.weeklyTotals, 
+                mileage: userTrainingPlan.mileage,
+            })
         }catch(error){
             console.log(error)
         }

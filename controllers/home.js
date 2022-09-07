@@ -1,5 +1,13 @@
+const User = require('../models/User')
+const TrainingPlan = require("../models/TrainingPlan");
+
 module.exports = {    
-    getIndex: (req,res)=>{
-        res.render('index.ejs')
+    getIndex: async (req,res)=>{
+        try{
+            if(req.user) return await TrainingPlan.findOne({userId: req.user.id}) ? res.redirect('/calendar') : res.redirect('/')
+            res.render('index.ejs')
+        }catch(error){
+            console.log(error)
+        }
     }
 }
