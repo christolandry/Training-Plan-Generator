@@ -5,13 +5,13 @@ module.exports = {
     getCalendar: async (request, response) => {
         try{
             const userTrainingPlan = await TrainingPlan.findOne({userId: request.user.id})
-            // response.render('calendar.ejs', {distance: userTrainingPlan.distance, weeklySchedule: userTrainingPlan.weeklySchedule, weeklyTotals: userTrainingPlan.weeklyTotals, mileage: userTrainingPlan.mileage})
-            response.render('plan.ejs', {
+            const data = {
                 distance: userTrainingPlan.distance, 
                 weeklySchedule: userTrainingPlan.weeklySchedule, 
                 weeklyTotals: userTrainingPlan.weeklyTotals, 
                 mileage: userTrainingPlan.mileage,
-            })
+            }
+            response.render('plan.ejs', {userTrainingPlan: data})
         }catch(error){
             console.log(error)
         }
