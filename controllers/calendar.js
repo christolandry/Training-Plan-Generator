@@ -1,5 +1,5 @@
 const TrainingPlan = require("../models/TrainingPlan");
-const User = require("../models/User");
+const Workouts = require("../models/Workouts");
 
 module.exports = {
     getCalendar: async (request, response) => {
@@ -32,7 +32,7 @@ module.exports = {
         let secondaryWorkouts = generateSecondaryWorkouts(planDuration, goalDistance, pace)
         let weeklyMileage = generateWeeklyMileage(planDuration, maxMileage, pace, longRuns, primaryWorkouts, secondaryWorkouts)
         let maintenanceRuns = generateMaintenanceRuns(planDuration, weeklyMileage, pace, week.runningDays)
-        let weeklySchedule = generateWeeklySchedule(planDuration, week, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace)
+        let weeklySchedule = await generateWeeklySchedule(planDuration, week, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace)
 
         //store data in the database
         await TrainingPlan.create({
@@ -79,6 +79,7 @@ function generateLongRuns(duration, race, maxLR){
 
 function generatePrimaryWorkouts(duration, race, pace){
     //Generate Primary Workouts.  Note the the two weeks do not have workouts and are replaced by maintenance runs
+    //workouts[week][type, duration, units, mileage]
     let workouts = Array(duration)
     if(duration === 16 && race === 26){
         
@@ -108,6 +109,7 @@ function generatePrimaryWorkouts(duration, race, pace){
 
 function generateSecondaryWorkouts(duration, race, pace){
     //Generate Primary Workouts.  Note the the two weeks do not have workouts and are replaced by maintenance runs
+    //workouts[week][type, duration, units, mileage]
     let workouts = Array(duration)
     if(duration === 16 && race === 26){
         workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
@@ -120,9 +122,9 @@ function generateSecondaryWorkouts(duration, race, pace){
         workouts[7] = ["Fartlek", 40, "min"]
         workouts[8] = ["Hills", 45, "min"]
         workouts[9] = ["Tempo", 45, "min"]
-        workouts[10] = ["Progression", 50, "min"]
+        workouts[10] = ["Progression Run", 50, "min"]
         workouts[11] = ["Tempo", 50, "min"]
-        workouts[12] = ["Progression", 45, "min"]
+        workouts[12] = ["Progression Run", 45, "min"]
         workouts[13] = ["Track", 6, "miles"]
         workouts[14] = ["Fartlek", 20, "min"]
         workouts[15] = ["Tempo", 18, "min"]
@@ -183,49 +185,65 @@ function generateMaintenanceRuns(duration, weeklyMileage, pace, runningDays){
     return maintenanceRuns
 }
 
-function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace){
-    //weeklySchedule[week][type, amount, unit]
+async function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace){
+    //weeklySchedule[week][type of run, amount(# of minutes or miles), unit (minutes or miles), title, innerText]
     let weeklySchedule = Array.from({length: duration}, e => Array(7).fill(0)); 
-    let type, units, amount, maintenanceRunCount, weeklyTotalMileage, miles
+    let type, units, amount, maintenanceRunCount, weeklyTotalMileage, text, title
     let weeklyScheduleTotals = Array(duration).fill(0)
 
     for(let week = 0; week < duration; week++){
         maintenanceRunCount = 0
         weeklyTotalMileage = 0
         for(let day = 0; day < 7; day++){
-            switch(weekInfo[day]){
+            switch (weekInfo[day]){
                 case "maintenanceRunStrides":
                     type = "Maintenance Run & Strides"
                     units = "miles"
                     amount = maintenanceRuns[week][maintenanceRunCount++]
-                    miles = amount
+                    title = `${maintenanceRuns[week][maintenanceRunCount - 1]} mile MR`
+                    text = `${maintenanceRuns[week][maintenanceRunCount - 1]} mile maintenance run`
                     break;
                 case "secondaryWorkout":
                     type = secondaryWorkouts[week][0]
                     units = secondaryWorkouts[week][2]
                     amount = secondaryWorkouts[week][1]
-                    miles = secondaryWorkouts[week][3]
+                    //             duration                                      unit                                             type
+                    title = `${secondaryWorkouts[week][1]} ${secondaryWorkouts[week][2] === "miles" ? 'mile' : 'min'} ${secondaryWorkouts[week][0] === "Maintenance Run" ? "MR" : secondaryWorkouts[week][0]}`
+                    if(secondaryWorkouts[week][0] === "Maintenance Run"){
+                        text = `${secondaryWorkouts[week][1]} mile maintenance run`
+                    }else{                    
+                        const currentSWO = await Workouts.findOne({type: secondaryWorkouts[week][0].toLowerCase(), duration: secondaryWorkouts[week][1]})
+                        text = currentSWO.text
+                    }
                     break
                 case "primaryWorkout":
                     type = primaryWorkouts[week][0]
                     units = primaryWorkouts[week][2]
                     amount = primaryWorkouts[week][1]
-                    miles = primaryWorkouts[week][3]
+                    //             duration                                      unit                                             type
+                    title = `${primaryWorkouts[week][1]} ${primaryWorkouts[week][2] === "miles" ? 'mile' : 'min'} ${primaryWorkouts[week][0] === "Maintenance Run" ? "MR" : primaryWorkouts[week][0]}`
+                    if(primaryWorkouts[week][0] === "Maintenance Run"){
+                        text = `${primaryWorkouts[week][1]} mile maintenance run`
+                    }else{                    
+                        const currentPWO = await Workouts.findOne({type: primaryWorkouts[week][0].toLowerCase(), duration: primaryWorkouts[week][1]})
+                        text = currentPWO.text
+                    }
                     break
                 case "longRun":
                     type = "Long Run"
                     units = "miles"
                     amount = longRuns[week]
-                    miles = amount
+                    title = `${longRuns[week]} mile LR`
+                    text = `${longRuns[week]} mile long run`
                     break
                 default:
                     type = "Rest Day"
                     units = ""
                     amount = ""
-                    miles = 0
+                    title = "Rest Day"
+                    text = "Rest Day"
             }
-            weeklySchedule[week][day] = [type, amount, units]
-            // weeklyTotalMileage += +miles
+            weeklySchedule[week][day] = [type, amount, units, title, text]
             weeklyTotalMileage += units === "miles" ? +amount : +amount / pace
         }
         //add in the warm up and cool downs 

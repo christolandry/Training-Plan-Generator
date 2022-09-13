@@ -239,19 +239,31 @@ $.extend(Date.prototype, {
   const weeklyTotals = trainingDataObj.weeklyTotals
   const currentDate = new Date(2022,8,4)
 
+  // Form for an event on the calendar
   // data.push({ title: string,  start: new Date(year, month, day, hour, min), end: Date(year, month, day, hour, min), allDay: false, text: text  });
-  // example
+  // Example
   // data.push({title: weeklySchedule[0][0][0], start: new Date(2022,8,4,8,30), end: null, allDay: false, text: weeklySchedule[0][0][2]})
 
 
-
+  console.log(trainingDataObj)
+  console.log(weeklySchedule)
+  
+  workoutTitles = ["Tempo", "Fartlek", "Hills", "Track", "Progression Run"]
   for(let week = 0; week < mileage.length; week++){
-
     for(let day = 0; day < 7; day++){
       let today = new Date(currentDate.getTime())
       currentDate.setDate(currentDate.getDate() + 1)
-      
-      data.push({title: weeklySchedule[week][day][0], start: today, end: null, allDay: false, text: `${weeklySchedule[week][day][1]} ${weeklySchedule[week][day][2]} ${weeklySchedule[week][day][0]}`})
+      if(workoutTitles.includes(weeklySchedule[week][day][0])){
+        //add warm up
+        data.push({title: "Warm Up", start: today, end: null, allDay: false, text: `${mileage[week][2]} minute warm up`})
+      }
+      let units = weeklySchedule[week][day][2] === "miles" ? 'mile' : 'minute'
+      //add main run
+      data.push({title: weeklySchedule[week][day][3], start: today, end: null, allDay: false, text: weeklySchedule[week][day][4]})
+      if(workoutTitles.includes(weeklySchedule[week][day][0])){
+        //add cool down
+        data.push({title: "Cool Down", start: today, end: null, allDay: false, text: `${mileage[week][3]} minute cool down`})
+      }
     }
   }
   console.log(data)
