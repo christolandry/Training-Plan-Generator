@@ -55,7 +55,7 @@ module.exports = {
 
 function generateStartDate(enteredDate){
     let startDate = new Date(enteredDate)
-    startDate.setDate(startDate.getDate() - startDate.getDay())
+    startDate.setDate(startDate.getUTCDate() - startDate.getDay())
     return startDate
 }
 
