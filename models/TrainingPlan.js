@@ -17,11 +17,11 @@ const TrainingPlan = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  startingDate: {
+  startDate: {
     type: Date,
     required: false,
   },
-  userId: { //New
+  userId: { 
     type: String,
     required: true,
   },

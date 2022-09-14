@@ -10,6 +10,7 @@ module.exports = {
                 weeklySchedule: userTrainingPlan.weeklySchedule, 
                 weeklyTotals: userTrainingPlan.weeklyTotals, 
                 mileage: userTrainingPlan.mileage,
+                startDate: userTrainingPlan.startDate,
             }
             response.render('plan.ejs', {userTrainingPlan: data})
         }catch(error){
@@ -25,8 +26,10 @@ module.exports = {
         const maxLR = Number(request.body.maxLR)
         const pace = Number(request.body.minutes) + Number(request.body.seconds) / 60
         const week = JSON.parse(request.body.weekSchedule)
+        
 
         //generate run data.
+        let startDate = generateStartDate(request.body.startDate)
         let longRuns = generateLongRuns(planDuration, goalDistance, maxLR)
         let primaryWorkouts = generatePrimaryWorkouts(planDuration, goalDistance, pace)
         let secondaryWorkouts = generateSecondaryWorkouts(planDuration, goalDistance, pace)
@@ -40,7 +43,7 @@ module.exports = {
             weeklySchedule: weeklySchedule[0],
             weeklyTotals: weeklySchedule[1],
             mileage: weeklyMileage,
-            // startingDate: ,
+            startDate: startDate,
             userId: request.user.id,
           });        
         response.redirect("/calendar")
@@ -49,6 +52,12 @@ module.exports = {
     }
   },
 };
+
+function generateStartDate(enteredDate){
+    let startDate = new Date(enteredDate)
+    startDate.setDate(startDate.getDate() - startDate.getDay())
+    return startDate
+}
 
 function generateLongRuns(duration, race, maxLR){
     //Generate long runs array.

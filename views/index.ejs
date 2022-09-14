@@ -78,6 +78,9 @@
         
     <!-- Runner's Inputs -->
     <form action="/calendar/postGenerateCalendar" method="POST">
+        <label for="startDate" class="directions">What Monday would you like as a start date? (non-Mondays will revert to most recent Monday)</label>
+        <input name="startDate" id="startDate" class="directions" type="date"></select>
+
         <!-- Distance are you training for? -->
         <label for="goalDistance" class="directions">What distance are you training for</label>
         <select name="goalDistance" id="goalDistance" class="directions">

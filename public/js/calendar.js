@@ -215,11 +215,11 @@ $.extend(Date.prototype, {
       }
     });
   })({
-    days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     date: (new Date()),
-        daycss: ["c-sunday", "", "", "", "", "", "c-saturday"],
+        daycss: ["c-monday", "", "", "", "", "", "c-sunday"],
         todayname: "Today",
         thismonthcss: "current",
         lastmonthcss: "outside",
@@ -237,7 +237,11 @@ $.extend(Date.prototype, {
   const mileage = trainingDataObj.mileage
   const weeklySchedule = trainingDataObj.weeklySchedule
   const weeklyTotals = trainingDataObj.weeklyTotals
-  const currentDate = new Date(2022,8,4)
+  const startDate = new Date(trainingDataObj.startDate)
+  console.log(startDate)
+
+  const currentDate = new Date(startDate.getUTCFullYear(),startDate.getUTCMonth(),startDate.getUTCDate())
+  console.log(currentDate)
 
   // Form for an event on the calendar
   // data.push({ title: string,  start: new Date(year, month, day, hour, min), end: Date(year, month, day, hour, min), allDay: false, text: text  });
