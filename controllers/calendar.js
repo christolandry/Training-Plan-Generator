@@ -64,7 +64,7 @@ function generateLongRuns(duration, race, maxLR){
     let longRuns = Array(duration).fill(0)  
 
     if(duration === 16 && race === 26){
-        longRuns[15] = 0
+        longRuns[15] = 26.2
         longRuns[14] = Math.floor(maxLR * 0.6)
         longRuns[13] = Math.floor(maxLR * 0.8)
         longRuns[12] = maxLR
@@ -239,11 +239,17 @@ async function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorko
                     }
                     break
                 case "longRun":
-                    type = "Long Run"
                     units = "miles"
                     amount = longRuns[week]
-                    title = `${longRuns[week]} mile LR`
-                    text = `${longRuns[week]} mile long run`
+                    if(week + 1 == duration){
+                        type = "Race"
+                        title = `Race ${longRuns[week]} ${units}`
+                        text = `Race Day! <br> Good luck!`
+                    }else{
+                        type = "Long Run"
+                        title = `${longRuns[week]} mile LR`
+                        text = `${longRuns[week]} mile long run`
+                    }
                     break
                 default:
                     type = "Rest Day"
