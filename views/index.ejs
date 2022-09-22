@@ -1,123 +1,244 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Training Plan Creator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-<html lang="en">
-  <head>
-    <!-- import font from Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,700&display=swap" rel="stylesheet">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <!-- external CSS link -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Training Plan Creator</h1>
+								<p>A individually tailored training plan based on your custom inputs<br />
+								Created by Christo Landry at <a href="https://ascentrunningcoaching.com">Ascent Running: Coaching</a></p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<% if(!user){ %>
+									<li><a href="/login">Log In</a></li>
+									<li><a href="/signup">Sign Up</a></li>
+								<% } %>
+								<% if(user){ %>
+									<li><a href="#create">Create</a></li>
+									<li><a href="/logout">Log Out</a></li>
+								<% } %>
+								<!-- <li><a href="#elements">Elements</a></li> -->
+							</ul>
+						</nav>
+					</header>
 
-    <title>Scheduling</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="flex">
-      <nav>
-        <ul class="flex">
-          <li><a href="/signup" class ="navLink">Sign Up</a></li>
-          <li><a href="/login" class ="navLink">Log In</a></li>
-          <li><a href="/logout" class ="navLink">Log Out</a></li>
-        </ul>
-      </nav>
-    </header>
-    
-    <!-- Jumbotron area -->
-    <main>
-      <h1>Create Your Schedule</h1>
-      <p>Follow the prompts to design your personal weekly running schedule</p>
-    </main>
-                       
-    <!-- Scheduling portion -->   
-    <section class="flex flexCenter schedule">
-      <section class="center">
-        <h4>Monday</h4>
-        <span class="day" id="day0">Open</span>
-      </section>
-      <section class="center">
-        <h4>Tuesday</h4>
-        <span class="day" id="day1">Open</span>
-      </section>
-      <section class="center">
-        <h4>Wednesday</h4>
-        <span class="day" id="day2">Open</span>
-      </section>
-      <section class="center">
-        <h4>Thursday</h4>
-        <span class="day" id="day3">Open</span>
-      </section>
-      <section class="center">
-        <h4>Friday</h4>
-        <span class="day" id="day4">Open</span>
-      </section>
-      <section class="center">
-        <h4>Saturday</h4>
-        <span class="day" id="day5">Open</span>
-      </section>
-      <section class="center">
-        <h4>Sunday</h4>
-        <span class="day" id="day6">Open</span>
-      </section>
-    </section>
+				<!-- Main -->
+					<div id="main">
 
+						<!-- Log In -->
+							<article id="login">
+								<h2 class="major">Log In</h2>
+								
+								<div class="form">
+									
+									<% if (locals.messages.errors) { %>
+										<% messages.errors.forEach( el => { %>
+											<div class="alert alert-danger"><%= el.msg %></div>
+										<% }) %>    
+									<% } %>
+									<% if (locals.messages.info) { %>
+										<% messages.info.forEach( el => { %>
+											<div class="alert alert-danger"><%= el.msg %></div>
+										<% }) %>    
+									<% } %>
+							
+									<form class="form__content" action="/login" method="POST">
+										<div class="form__field">
+											<input type="email" name="email" class="form__input" placeholder="Email" required>
+										</div>
+										<br>
+										<div class="form__field">
+											<input type="password" class="form__input form__input--pass" name="password" placeholder="Password" required>
+										</div>
+										<br>
+										<input type="submit" value="Login" class="form__btn">
+										
+										<div class="form__signup">Not a member? <a href="/Signup">Signup</a></div>
+									</form>           
+								</div>
+							</article>
 
-    <!-- This is where the instructions are printed with JS -->
-    <section class="instructions">
-      <label for= "daysOfRunning" id="question" class="directions">How many days do you want to run?</label>
-      <select name="daysOfRunning" id="daysOfRunning" class="directions">
-        <!-- <option value="4">4</option> -->
-        <option value="5" selected>5</option>
-        <!-- <option value="6">6</option> -->
-        <!-- <option value="7">7</option> -->
-      </select>
-      <span class="button directions" id="submitDays">Submit</span>
-    </section>  
-        
-    <!-- Runner's Inputs -->
-    <form action="/calendar/postGenerateCalendar" method="POST">
-        <label for="startDate" class="directions">What Monday would you like as a start date? (non-Mondays will revert to most recent Monday)</label>
-        <input name="startDate" id="startDate" class="directions" type="date"></select>
+						<!-- Sign Up -->
+							<article id="signup">
+								<h2 class="major">Sign Up</h2>
+								<div class="form">
+									<% if (locals.messages.errors) { %>
+										<% messages.errors.forEach( el => { %>
+											<div class="alert alert-danger"><%= el.msg %></div>
+										<% }) %>    
+									<% } %>
+							
+									<form class="form__content" action="/signup" method="POST">
+										<div class="form__field">
+											<input type="email" name="email" class="form__input" placeholder="Email">
+											<br>
+										</div>
+										<div class="form__field">
+											<input type="password" name="password" class="form__input" placeholder="Password">
+											<br>
+										</div>
+										<div class="form__field">
+											<input type="password" name="confirmPassword"  class="form__input" placeholder="Confirm Password">
+											<br>
+										</div>						
+										<input type="submit" value="Sign Up" class="form__btn">
+							
+									</form>
+								</div>
+							</article>
+						
+						<!-- Create -->
+							
+							<article id="create">
+								<div class="flex">
+									<h2 class="major">Create Your Training Plan</h2>
+								</div>
+								<div class="flex" id="stageDaysOfRunning">
+									<label for="daysOfRunning" class="directions">How many days do you want to run?</label>
+									<select name="daysOfRunning" id="daysOfRunning" class="input directions">
+										<!-- <option value="4">4</option> -->
+										<option value="5" selected>5</option>
+										<!-- <option value="6">6</option> -->
+										<!-- <option value="7">7</option> -->
+									</select>
+									<span class="button directions" id="submitDays">Submit</span>
+								</div>
+								<div id="stageChooseDays">
+									<div class="table-wrapper" >
+										<!-- <table class="alt"> -->
+										<table>
+											<tbody>
+												<tr>
+													<td class="days">Monday</td>
+													<td class="day"><button class="dayButton" id="day0">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Tuesday</td>
+													<td class="day"><button class="dayButton" id="day1">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Wednesday</td>
+													<td class="day"><button class="dayButton" id="day2">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Thursday</td>
+													<td class="day"><button class="dayButton" id="day3">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Friday</td>
+													<td class="day"><button class="dayButton" id="day4">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Saturday</td>
+													<td class="day"><button class="dayButton" id="day5">Open</button></td>
+												</tr>
+												<tr>
+													<td class="days">Sunday</td>
+													<td class="day"><button class="dayButton" id="day6">Open</button></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<span id="question" class="directions"></span>
+									</div>
+									<div class="flex">
+										<button id="stageStartInputs">Continue</button>
+									</div>
+								</div>
+							
+								<div id="stageProvideInputs">
+									<!-- Runner's Inputs -->
+									<form action="/calendar/postGenerateCalendar" method="POST" class="flex">
+										<label for="startDate" class="directions">What Monday would you like as a start date?</label>
+										<label for="startDate" class="directions">(non-Mondays will revert to most recent Monday)</label>
+										<input name="startDate" id="startDate" class="directions input" type="date" ></select>
 
-        <!-- Distance are you training for? -->
-        <label for="goalDistance" class="directions">What distance are you training for</label>
-        <select name="goalDistance" id="goalDistance" class="directions">
-            <option value="26" selected>Marathon</option>
-            <!-- <option value="13">Half Marathon</option>
-            <option value="6">10km</option>
-            <option value="3">5km</option> -->
-        </select>
-        <!-- How long is the training program? -->
-        <label for="planDuration" class="directions">What is the duration of the training plan?</label>
-        <select name="planDuration" id="planDuration" class="directions">
-            <!-- <option value="12">12 weeks</option> -->
-            <option value="16" selected>16 weeks</option>
-            <!-- <option value="20">20 weeks</option> -->
-        </select>
-        <!-- What do you want your longest week of mileage to be. -->
-        <label for="maxMileage" class="directions">What is the highest weekly mileage total you are looking to hit?</label>
-        <input type="number" id="maxMileage" name="maxMileage" min="5" max="150" class="directions" value = 50>
-        <!-- Longest Long Run -->
-        <label for="maxLR" class="directions">How long do you want your longest long run to be?</label>
-        <input type="number" id="maxLR" name="maxLR" min="20" max="30" class="directions" value="20">
+										<!-- Distance are you training for? -->
+										<label for="goalDistance" class="directions">What distance are you training for</label>
+										<select name="goalDistance" id="goalDistance" class="directions input">
+											<option value="26" selected>Marathon</option>
+											<!-- <option value="13">Half Marathon</option>
+											<option value="6">10km</option>
+											<option value="3">5km</option> -->
+										</select>
+										<!-- How long is the training program? -->
+										<label for="planDuration" class="directions">What is the duration of the training plan?</label>
+										<select name="planDuration" id="planDuration" class="directions input">
+											<!-- <option value="12">12 weeks</option> -->
+											<option value="16" selected>16 weeks</option>
+											<!-- <option value="20">20 weeks</option> -->
+										</select>
+										<!-- What do you want your longest week of mileage to be. -->
+										<label for="maxMileage" class="directions">What is the highest weekly mileage total you are looking to hit?</label>
+										<label for="maxMileage" class="directions">Minimum of 40 miles for the marathon</label>
+										<input type="number" id="maxMileage" name="maxMileage" min="40" max="150" class="directions input" value = 50>
+										<!-- Longest Long Run -->
+										<label for="maxLR" class="directions">How long do you want your longest long run to be?</label>
+										<label for="maxLR" class="directions">Minimum of 20 miles for the marathon.</label>
+										<input type="number" id="maxLR" name="maxLR" min="20" max="30" class="directions input" value="20">
 
-        <label class="directions">What is your normal running pace (min/sec per mile)</label>
-        <label for="minutes" class="directions">Minutes</label>
-        <input type="number" id="minutes" name="minutes" min="5" max="30" class="directions" value ="7">
-        <label for="seconds" class="directions">Seconds</label>
-        
-        <input type="number" id="seconds" name="seconds" min="0" max="59" class="directions" value = "30">
+										<label class="directions">What is your normal running pace (min/sec per mile)</label>
+										<div class="flexRow">
+											<div>
+												<label for="minutes" class="directions ">Minutes</label>
+												<input type="number" id="minutes" name="minutes" min="5" max="30" class="directions input" value ="7">
+											</div>	
+											<div class="marginLeft">
+												<label for="seconds" class="directions">Seconds</label>
+												<input type="number" id="seconds" name="seconds" min="0" max="59" class="directions input" value = "30">
+											</div>
+										</div>
+										
+										
 
-        <input type="hidden" id="weekSchedule" name = "weekSchedule">
+										<input type="hidden" id="weekSchedule" name = "weekSchedule">
+										
+										<input type="submit" class="directions">
+									</form>
+								</div>
+							</article>
+					</div>
 
-        <input type="submit" class="directions">
-    </form>
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; <a href="https://AscentRunningCoaching.com">Ascent Running Coaching LLC</a> | Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
 
-    <footer>
-        
-    </footer>
-    <script type="text/javascript" src="js/scheduler.js"></script>
-  </body>
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+			<script type="text/javascript" src="js/scheduler.js"></script>
+
+	</body>
 </html>

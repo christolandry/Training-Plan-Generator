@@ -1,12 +1,18 @@
+@media only screen and (max-width: 800px){
+  
+}
+
 .calendar-day {
-  width: 100px;
+  /* width: 100px; */
   min-width: 100px;
-  max-width: 100px;
-  height: 80px;
+  /* max-width: 200px; */
+  min-height: 80px;
+  height: 100px;
+  max-height: 120px;
 }
 .calendar-table {
   margin: 0 auto;
-  width: 700px;
+  /* width: 80vw; */
 }
 .selected {
   background-color: #eee;
@@ -32,6 +38,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 1px;
+  cursor: pointer;
 }
 .event.begin {
   border-left: 1px solid #b2dba1;
@@ -82,4 +89,42 @@
 .table-tight-vert > tfoot > tr > td {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* ------------Add by Christo Landry------------ */
+/* .calendar-table{ */
+.theme-showcase{
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.btn-link, button{
+  color: black !important;
+}
+table th{
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+table thead{
+  border-bottom: none;
+}
+
+table tbody tr{
+  border: none;
+}
+
+.table>tbody>tr>td,
+.table>thead>tr>th{
+  border-top-color: rgb(200, 200, 200);
+}
+
+.js-call-option{
+  vertical-align: middle;
+}
+
+/* #wrapper.calendarWrapper{
+  min-height: 80vh;
+} */
+
+#wrapper footer .copyright{
+  font-size: 1em;
 }

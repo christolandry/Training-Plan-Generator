@@ -6,9 +6,7 @@ const TrainingPlan = require("../models/TrainingPlan");
   exports.getLogin = async (req, res) => {
     try{
       if(req.user) return await TrainingPlan.findOne({userId: req.user.id}) ? res.redirect('/calendar') : res.redirect('/')
-      res.render('login', {
-        title: 'Login'
-      })
+      res.redirect('/#login')
     }catch(error){
       console.log(error)
     }
@@ -59,9 +57,10 @@ const TrainingPlan = require("../models/TrainingPlan");
   exports.getSignup = async (req, res) => {
     try{
       if(req.user) return await TrainingPlan.findOne({userId: req.user.id}) ? res.redirect('/calendar') : res.redirect('/')
-      res.render('signup', {
-        title: 'Create Account'
-      })
+      // res.render('signup', {
+      //   title: 'Create Account'
+      // })
+      res.redirect("/#signup")
     }catch(error){
       console.log(error)
     }

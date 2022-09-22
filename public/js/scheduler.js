@@ -1,9 +1,11 @@
-// Global Variables
+//Set startDate to current date as a default
+document.getElementById('startDate').valueAsDate = new Date();
 
+// Global Variables
 let step = 0, longRun = 0, slr = 0, pwo = 0, swo = 0; runningDays = 0;
 let taken = [0,0,0,0,0,0,0];
 let week = {}
-let days = document.querySelectorAll('.day');
+let days = document.querySelectorAll('.dayButton');
 let directions = [
     "To start off, choose which day of the week you want to be your long run day.",
     "Great! Now choose which day you'd like for your harder workout of the week",
@@ -19,17 +21,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function firstDirection(){
     //Remove the number of running days select and submit.
-    document.querySelector("#daysOfRunning").style.display = "none";
-    document.querySelector("#submitDays").style.display = "none";
+    document.querySelector("#stageDaysOfRunning").style.display = "none";
+    document.querySelector("#stageChooseDays").style.display = "block";
+    document.querySelector("#stageStartInputs").style.visibility = "hidden";
+    document.querySelector("#stageStartInputs").style.display = "block";
     runningDays = document.querySelector("#daysOfRunning").value;
     //Directions Change
     changeDirections(0);
     //Add an event listener to each element with the class of day that runs addSteps when clicked.
     //If you pass in a function with parameters it will execte immediately, so do an empty function 
     days.forEach((current, dayOfTheWeek) => current.addEventListener('click',() => directionAdder(dayOfTheWeek)))
+    document.querySelector("#stageStartInputs").addEventListener('click', changeToInputs)
 }
 
- function directionAdder(i){
+function changeToInputs(){
+    document.querySelector("#stageChooseDays").style.display = "none";
+    document.querySelector("#stageProvideInputs").style.display = "block";
+}
+
+
+function directionAdder(i){
     if(runningDays == 4){
         stepsFor4DaysOfRunning(i);
     }else if(runningDays == 5){
@@ -252,11 +263,15 @@ function increment(i){
 
 function changeDirections(i){
     document.querySelector('#question').innerHTML = directions[i];
+    if(i == 5) {
+        document.querySelector("#stageStartInputs").style.display = "block";
+        document.querySelector("#stageStartInputs").style.visibility = "visible";
+    }
 }
 
 function changeBlock(day, color, text) {
     document.querySelector('#day' + day).innerText = text;
-    document.querySelector('#day' + day).style.backgroundColor = "#" + color;
+    // document.querySelector('#day' + day).style.backgroundColor = "#" + color;
 }
 
 function closeAll(taken) {

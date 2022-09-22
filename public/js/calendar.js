@@ -224,11 +224,16 @@ $.extend(Date.prototype, {
         thismonthcss: "current",
         lastmonthcss: "outside",
         nextmonthcss: "outside",
-    mode: "month",
+        mode: screen.width > 800 ? "month" : "week", //added to work on responsiveness.
     data: []
   }, jQuery, window, document);
     
 })(jQuery);
+//----------------Set screen to portrait under 800px-----------------
+if(screen.width <= 800){
+  screen.orientation.lock("portrait")
+}
+
 
 //-----------------------Add Events to the Calendar----------------------------
   var data = []
@@ -238,19 +243,13 @@ $.extend(Date.prototype, {
   const weeklySchedule = trainingDataObj.weeklySchedule
   const weeklyTotals = trainingDataObj.weeklyTotals
   const startDate = new Date(trainingDataObj.startDate)
-  console.log(startDate)
 
   const currentDate = new Date(startDate.getUTCFullYear(),startDate.getUTCMonth(),startDate.getUTCDate())
-  console.log(currentDate)
 
   // Form for an event on the calendar
   // data.push({ title: string,  start: new Date(year, month, day, hour, min), end: Date(year, month, day, hour, min), allDay: false, text: text  });
   // Example
   // data.push({title: weeklySchedule[0][0][0], start: new Date(2022,8,4,8,30), end: null, allDay: false, text: weeklySchedule[0][0][2]})
-
-
-  console.log(trainingDataObj)
-  console.log(weeklySchedule)
   
   workoutTitles = ["Tempo", "Fartlek", "Hills", "Track", "Progression Run"]
   for(let week = 0; week < mileage.length; week++){
@@ -270,7 +269,6 @@ $.extend(Date.prototype, {
       }
     }
   }
-  console.log(data)
 
   //data must be sorted by start date
   data.sort(function(a,b) { return (+a.start) - (+b.start); });

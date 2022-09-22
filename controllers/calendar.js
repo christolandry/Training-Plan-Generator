@@ -5,6 +5,7 @@ module.exports = {
     getCalendar: async (request, response) => {
         try{
             const userTrainingPlan = await TrainingPlan.findOne({userId: request.user.id})
+            if(!userTrainingPlan) response.redirect('/')
             const data = {
                 distance: userTrainingPlan.distance, 
                 weeklySchedule: userTrainingPlan.weeklySchedule, 
