@@ -231,7 +231,8 @@ $.extend(Date.prototype, {
 })(jQuery);
 //----------------Set screen to portrait under 800px-----------------
 if(screen.width <= 800){
-  screen.orientation.lock("portrait")
+  screen.orientation.lock("landscape")
+  console.log("This only works on phones, not chrome developer tools")
 }
 
 

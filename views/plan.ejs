@@ -67,15 +67,15 @@
               <td colspan="7" style="text-align: center">
                 <table style="white-space: nowrap; width: 100%">
                   <tr>
-                    <td style="text-align: left;">
-                      <span class="btn-group">
+                    <td style="text-align: left;" class="flex">
+                      <span class="btn-group ">
                         <button class="js-cal-prev btn btn-default">&lt;</button>
                         <button class="js-cal-next btn btn-default">&gt;</button>
                       </span>
-                      <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+                      <button class="js-cal-option btn btn-default flex-margin {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
                     </td>
                     <td>
-                      <span class="btn-group btn-group-lg">
+                      <span class="btn-group btn-group-lg flex">
                         {{ if (mode !== 'day') { }}
                           {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
                           {{ if (mode ==='week') { }}
@@ -87,11 +87,11 @@
                         {{ } }}
                       </span>
                     </td>
-                    <td style="text-align: right">
-                      <span class="btn-group">
+                    <td style="text-align: right" class="time-displayed">
+                      <span class="btn-group flex">
                         <!-- <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Year</button> -->
                         <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Month</button>
-                        <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
+                        <button class="js-cal-option btn btn-default flex-margin {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
                         <!-- <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Day</button> -->
                       </span>
                     </td>
