@@ -24,7 +24,8 @@ https://github.com/christolandry/Training-Plan-Generator
 <p>It displays a calendar with the training for each day listed.  Users can click on days to get more specific information each run</p>
 
 ### Sources
-<p>Calendar: Was taken from here: https://codepen.io/bbarry/pen/jOQNjX and then modified to fit my uses. </p>
+<p>Template: HTML5 template: https://html5up.net/dimension and then modified.</p>
+<p>Calendar: Was taken from here: https://codepen.io/bbarry/pen/jOQNjX and then modified.</p>
 
 ## Lessons Learned:
 
