@@ -44,6 +44,6 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/calendar', calendarRoutes)
  
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server is running on PORT ${process.env.PORT}, you better catch it!`)
 })    
