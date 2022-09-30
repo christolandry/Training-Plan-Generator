@@ -86,7 +86,7 @@ const TrainingPlan = require("../models/TrainingPlan");
   
     User.findOne({$or: [
       {email: req.body.email},
-      // {userName: req.body.userName}
+      {userName: req.body.userName}
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
