@@ -24,6 +24,7 @@ connectDB()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.set("views", path.join(__dirname, "views")) //added for Vercel
+app.set("public", path.join(__dirname, "public")) //added for Vercel
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
