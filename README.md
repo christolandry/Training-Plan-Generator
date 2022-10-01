@@ -33,6 +33,11 @@ Creating a full-stack web app in the MERN tech stack.  Some of the more difficul
 
 ## Optimizations:
 <ul>
+  <li>Fix bugs</li>
+    <ul>
+        <li>Some text overrun on mobile</li>
+        <li>Calendar doesn't work on iPhones (but does on iPad, and android phones)</li>
+    </ul>
   <li>Add in more options to choose from when createing the training program including:
     <ul>
         <li>Number of running days</li>
