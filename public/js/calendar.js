@@ -260,14 +260,14 @@ if(screen.width <= 800){
       currentDate.setDate(currentDate.getDate() + 1)
       if(workoutTitles.includes(weeklySchedule[week][day][0])){
         //add warm up
-        data.push({title: "Warm Up", start: today, end: null, allDay: false, text: `${mileage[week][2]} minute warm up`})
+        data.push({title: `${mileage[week][2]} min Warm Up`, start: today, end: null, allDay: false, text: `${mileage[week][2]} minute warm up`})
       }
       let units = weeklySchedule[week][day][2] === "miles" ? 'mile' : 'minute'
       //add main run
       data.push({title: weeklySchedule[week][day][3], start: today, end: null, allDay: false, text: weeklySchedule[week][day][4]})
       if(workoutTitles.includes(weeklySchedule[week][day][0])){
         //add cool down
-        data.push({title: "Cool Down", start: today, end: null, allDay: false, text: `${mileage[week][3]} minute cool down`})
+        data.push({title: `${mileage[week][3]} min Cool Down`, start: today, end: null, allDay: false, text: `${mileage[week][3]} minute cool down`})
       }
     }
   }

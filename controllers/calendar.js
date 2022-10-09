@@ -27,14 +27,13 @@ module.exports = {
         const maxLR = Number(request.body.maxLR)
         const pace = Number(request.body.minutes) + Number(request.body.seconds) / 60
         const week = JSON.parse(request.body.weekSchedule)
-        
 
         //generate run data.
         let startDate = generateStartDate(request.body.startDate)
         let longRuns = generateLongRuns(planDuration, goalDistance, maxLR)
-        let primaryWorkouts = generatePrimaryWorkouts(planDuration, goalDistance, pace)
+        let primaryWorkouts = generatePrimaryWorkouts(planDuration, goalDistance, pace, week.runningDays)
         let secondaryWorkouts = generateSecondaryWorkouts(planDuration, goalDistance, pace)
-        let weeklyMileage = generateWeeklyMileage(planDuration, maxMileage, pace, longRuns, primaryWorkouts, secondaryWorkouts)
+        let weeklyMileage = generateWeeklyMileage(week.runningDays, planDuration, maxMileage, pace, longRuns, primaryWorkouts, secondaryWorkouts)
         let maintenanceRuns = generateMaintenanceRuns(planDuration, weeklyMileage, pace, week.runningDays)
         let weeklySchedule = await generateWeeklySchedule(planDuration, week, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace)
 
@@ -57,7 +56,6 @@ module.exports = {
 function generateStartDate(enteredDate){
     let startDate = new Date(enteredDate)
     startDate.setDate(startDate.getUTCDate() - startDate.getDay() - 1)
-    console.log(`EnteredDate: ${enteredDate} startDate: ${startDate}  startDate Day: ${startDate.getDate()}`)
     return startDate
 }
 
@@ -88,12 +86,57 @@ function generateLongRuns(duration, race, maxLR){
 }
 
 
-function generatePrimaryWorkouts(duration, race, pace){
+function generatePrimaryWorkouts(duration, race, pace, runningDays){
     //Generate Primary Workouts.  Note the the two weeks do not have workouts and are replaced by maintenance runs
     //workouts[week][type, duration, units, mileage]
     let workouts = Array(duration)
-    if(duration === 16 && race === 26){
-        
+    if(duration === 12 && race === 26 && runningDays == 4){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"] 
+        workouts[2] = ["Fartlek", 20, "min"]
+        workouts[3] = ["Tempo", 25, "min"]
+        workouts[4] = ["Hills", 30, "min"]
+        workouts[5] = ["Fartlek", 32, "min"]
+        workouts[6] = ["Tempo", 38, "min"]
+        workouts[7] = ["Hills", 45, "min"]
+        workouts[8] = ["Tempo", 40, "min"]
+        workouts[9] = ["Fartlek", 35, "min"]
+        workouts[10] = ["Tempo", 25, "min"]
+        workouts[11] = ["Fartlek", 12, "min"]
+    }
+    if(duration === 12 && race === 26 && runningDays > 4){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Fartlek", 20, "min"]
+        workouts[3] = ["Fartlek", 24, "min"]
+        workouts[4] = ["Fartlek", 28, "min"]
+        workouts[5] = ["Hills", 30, "min"]
+        workouts[6] = ["Tempo", 34, "min"]
+        workouts[7] = ["Tempo", 38, "min"]
+        workouts[8] = ["Tempo", 42, "min"]
+        workouts[9] = ["Fartlek", 35, "min"]
+        workouts[10] = ["Tempo", 25, "min"]
+        workouts[11] = ["Tempo", 18, "min"]
+    }
+    if(duration === 16 && race === 26 && runningDays == 4){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Fartlek", 20, "min"]
+        workouts[3] = ["Tempo", 25, "min"]
+        workouts[4] = ["Hills", 30, "min"]
+        workouts[5] = ["Fartlek", 32, "min"]
+        workouts[6] = ["Tempo", 34, "min"]
+        workouts[7] = ["Hills", 45, "min"]
+        workouts[8] = ["Progression Run", 45, "min"]
+        workouts[9] = ["Fartlek", 50, "min"]
+        workouts[10] = ["Progression Run", 50, "min"]
+        workouts[11] = ["Fartlek", 55, "min"]
+        workouts[12] = ["Tempo", 45, "min"]
+        workouts[13] = ["Fartlek", 35, "min"]
+        workouts[14] = ["Tempo", 25, "min"]
+        workouts[15] = ["Fartlek", 12, "min"]
+    }
+    if(duration === 16 && race === 26 && runningDays > 4){
         workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
         workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
         workouts[2] = ["Fartlek", 20, "min"]
@@ -111,6 +154,50 @@ function generatePrimaryWorkouts(duration, race, pace){
         workouts[14] = ["Tempo", 25, "min"]
         workouts[15] = ["Fartlek", 12, "min"]
     }
+    if(duration === 20 && race === 26 && runningDays == 4){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Fartlek", 20, "min"]
+        workouts[3] = ["Tempo", 25, "min"]
+        workouts[4] = ["Hills", 30, "min"]
+        workouts[5] = ["Fartlek", 32, "min"]
+        workouts[6] = ["Tempo", 34, "min"]
+        workouts[7] = ["Hills", 45, "min"]
+        workouts[8] = ["Progression Run", 45, ,"miles"]
+        workouts[9] = ["Track", 6, "miles"]
+        workouts[10] = ["Tempo", 50, "min"]
+        workouts[11] = ["Track", 7, "miles"]
+        workouts[12] = ["Progression Run", 55, "min"]
+        workouts[13] = ["Track", 9, "miles"]
+        workouts[14] = ["Track", 8, "miles", ,"tempo"]
+        workouts[15] = ["Tempo", 50, "min"]
+        workouts[16] = ["Track", 10, "miles"]
+        workouts[17] = ["Track", 6, "miles", ,"tempo"]
+        workouts[18] = ["Tempo", 25, "min"]
+        workouts[19] = ["Fartlek", 12, "min"]
+    }
+    if(duration === 20 && race === 26 && runningDays > 4){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Fartlek", 20, "min"]
+        workouts[3] = ["Fartlek", 24, "min"]
+        workouts[4] = ["Fartlek", 28, "min"]
+        workouts[5] = ["Hills", 30, "min"]
+        workouts[6] = ["Tempo", 34, "min"]
+        workouts[7] = ["Tempo", 38, "min"]
+        workouts[8] = ["Tempo", 42, "min"]
+        workouts[9] = ["Tempo", 45, "min"]
+        workouts[10] = ["Track", 6, "miles"]
+        workouts[11] = ["Track", 7, "miles"]
+        workouts[12] = ["Track", 7, "miles", ,"tempo"]
+        workouts[13] = ["Track", 8, "miles"]
+        workouts[14] = ["Track", 9, "miles"]
+        workouts[15] = ["Track", 8, "miles", ,"tempo"]
+        workouts[16] = ["Track", 10, "miles"]
+        workouts[17] = ["Tempo", 38, "min"]
+        workouts[18] = ["Fartlek", 24, "min"]
+        workouts[19] = ["Tempo", 12, "min"]
+    }
     //workouts[week][3] is the mileage for that workout as some workouts are denominated in minutes.
     for(let week = 0; week < duration; week++){
         workouts[week][3] = workouts[week][2] === "miles" ? workouts[week][1] : workouts[week][1] / pace
@@ -118,10 +205,24 @@ function generatePrimaryWorkouts(duration, race, pace){
     return workouts
 }
 
-function generateSecondaryWorkouts(duration, race, pace){
+function generateSecondaryWorkouts(duration, race, pace, runningDays){
     //Generate Primary Workouts.  Note the the two weeks do not have workouts and are replaced by maintenance runs
     //workouts[week][type, duration, units, mileage]
     let workouts = Array(duration)
+    if(duration === 12 && race === 26){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Tempo", 20, "min"]
+        workouts[3] = ["Tempo", 24, "min"]
+        workouts[4] = ["Tempo", 28, "min"]
+        workouts[5] = ["Fartlek", 32, "min"]
+        workouts[6] = ["Fartlek", 36, "min"]
+        workouts[7] = ["Fartlek", 40, "min"]
+        workouts[8] = ["Hills", 45, "min"]
+        workouts[9] = ["Tempo", 40, "min"]
+        workouts[10] = ["Fartlek", 20, "min"]
+        workouts[11] = ["Fartlek", 12, "min"]
+    }
     if(duration === 16 && race === 26){
         workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
         workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
@@ -136,9 +237,31 @@ function generateSecondaryWorkouts(duration, race, pace){
         workouts[10] = ["Progression Run", 50, "min"]
         workouts[11] = ["Tempo", 50, "min"]
         workouts[12] = ["Progression Run", 45, "min"]
-        workouts[13] = ["Track", 6, "miles"]
+        workouts[13] = ["Track", 6, "miles", ,"tempo"]
         workouts[14] = ["Fartlek", 20, "min"]
         workouts[15] = ["Tempo", 18, "min"]
+    }
+    if(duration === 20 && race === 26){
+        workouts[0] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[1] = ["Maintenance Run", Math.ceil(25/pace), "miles"]
+        workouts[2] = ["Tempo", 20, "min"]
+        workouts[3] = ["Tempo", 24, "min"]
+        workouts[4] = ["Tempo", 28, "min"]
+        workouts[5] = ["Fartlek", 32, "min"]
+        workouts[6] = ["Fartlek", 36, "min"]
+        workouts[7] = ["Fartlek", 40, "min"]
+        workouts[8] = ["Fartlek", 45, "min"]
+        workouts[9] = ["Hills", 45, "min"]
+        workouts[10] = ["Progression Run", 50, "min"]
+        workouts[11] = ["Tempo", 50, "min"]
+        workouts[12] = ["Progression Run", 55, "min"]
+        workouts[13] = ["Hills", 48, "min"]
+        workouts[14] = ["Progression Run", 55, "min"]
+        workouts[15] = ["Tempo", 55, "min"]
+        workouts[16] = ["Progression Run", 45, "min"]
+        workouts[17] = ["Track", 6, "miles", ,"tempo"]
+        workouts[18] = ["Tempo", 25, "min"]
+        workouts[19] = ["Fartlek", 12, "min"]
     }
     //workouts[week][3] is the mileage for that workout as some workouts are denominated in minutes.
     for(let week = 0; week < duration; week++){
@@ -147,59 +270,66 @@ function generateSecondaryWorkouts(duration, race, pace){
     return workouts
 }
 
-function generateWeeklyMileage(duration, maxMileage, pace, longRuns, primaryWorkouts, secondaryWorkouts){
+function generateWeeklyMileage(runningDays, duration, maxMileage, pace, longRuns, primaryWorkouts, secondaryWorkouts){
     //weeklyMileage: [total miles for the week, miles left for maintenance runs, warm up duration, cool down duration]
     //units are: [miles, miles, min, min]
     let weeklyMileage = Array(duration), milesAccountedFor
-    let percents16Weeks = [0.5, 0.56, 0.66, 0.74, 0.8, 0.88, 0.96, 0.8, 1, 0.84, 1, 0.84, 1, 0.8, 0.6, 0.4]
-    
-    //
-    if(duration === 16){
-        for(let week = 0; week < duration; week++){
-            //Total miles for the week
-            total = Math.floor(maxMileage * percents16Weeks[week])
-            //Miles already account for by the: Long Run, Primary Workout, & Secondary Workout
-            milesAccountedFor = longRuns[week] + primaryWorkouts[week][3] + secondaryWorkouts[week][3]
-            //Minutes left over for the warm up and cool down in the week after all runs except for warm ups and cool downs. 
-            let leftOver = (total - milesAccountedFor - 2 * Math.ceil(25/pace)) / 2 * pace
-            //Warm up is 2/3 of the left over minutes rounded up to a five min increment then subjected to a maximum and a minimum
-            let warmUp = Math.ceil((leftOver * 2 / 3) / 5) * 5
-            if(warmUp >= 20) warmUp = 20
-            if(warmUp < 10) warmUp = 10
-            //Cool down left over minutes after the warm up is taken into account rounded down to a five min increment then subjected to a maximum and a minimum
-            let coolDown = Math.floor((leftOver - warmUp) / 5) * 5
-            if(coolDown < 10) coolDown = 10
-            if(coolDown > 20) coolDown = 20
-                     
-            //weeklyMileage: [total miles for the week, miles left for maintenance runs, warm up duration, cool down duration]
-            //units are: [miles, miles, min, min]
-            weeklyMileage[week] = [total, total - milesAccountedFor - (warmUp * 2 + coolDown * 2) / pace, warmUp, coolDown]
-        }
+    let percents ={
+        12: [0.5, 0.64, 0.8, 0.9, 0.96, 0.8, 1, 0.8, 1, 0.9, 0.7, 0.4],
+        16: [0.5, 0.56, 0.66, 0.74, 0.8, 0.88, 0.96, 0.8, 1, 0.84, 1, 0.84, 1, 0.8, 0.6, 0.4],
+        20: [0.5, 0.56, 0.64, 0.72, 0.8, 0.88, 0.8, 0.96, 0.8, 1, 0.84, 1, 0.84, 1, 0.84, 1, 0.94, 0.8, 0.6, 0.4]
+    }
+
+    for(let week = 0; week < duration; week++){
+        //Total miles for the week
+        total = Math.floor(maxMileage * percents[duration][week])
+        //Miles already account for by the: Long Run, Primary Workout, Secondary Workout (runningDays 5+), & Secondary Long Run (runningDays 6+)
+        milesAccountedFor = longRuns[week] + primaryWorkouts[week][3] + (runningDays > 4 ? secondaryWorkouts[week][3] : 0) + (runningDays > 5 ? longRuns[week] / 2 : 0)
+        //Minutes left over for the warm up and cool down in the week after all runs except for warm ups and cool downs. 
+        //total - miles accounted for - scondary long run (runningDays 6+) - maintenance run - 2nd maintenance run  - 3rd maintenance run (runningDays 7)
+        let leftOverMinutes = (total   - milesAccountedFor 
+                                       - (runningDays > 5 ? longRuns[week] / 2 : 0) 
+                                       - Math.floor(25/pace) 
+                                       - Math.ceil(25/pace)
+                                       - (runningDays > 6 ? Math.floor(25/pace) : 0)) / 2 * pace
+        //Warm up is 2/3 of the left over minutes rounded up to a five min increment then subjected to a maximum and a minimum
+        let warmUp = Math.ceil((leftOverMinutes * 2 / 3) / 5) * 5
+        if(warmUp >= 20) warmUp = 20
+        if(warmUp < 10) warmUp = 10
+        //Cool down left over minutes after the warm up is taken into account rounded down to a five min increment then subjected to a maximum and a minimum
+        let coolDown = Math.floor((leftOverMinutes - warmUp) / 5) * 5
+        if(coolDown < 10) coolDown = 10
+        if(coolDown > 20) coolDown = 20
+                    
+        //weeklyMileage: [total miles for the week, miles left for maintenance runs, warm up duration, cool down duration]
+        //units are: [miles, miles, min, min]
+        weeklyMileage[week] = [total, total - milesAccountedFor - (warmUp * 2 + coolDown * 2) / pace, warmUp, coolDown]  
     }
     return weeklyMileage
 }
 
 function generateMaintenanceRuns(duration, weeklyMileage, pace, runningDays){
     let maintenanceRuns = Array(duration)
-    if(runningDays == 5){
-        for(let week = 0; week < duration; week++){
-            //If there is under 25 minutes worth of running for each maintenance run in the week, assign minimum amount of running for each maintenance run
-            if(weeklyMileage[week][1] < (25 / pace) * 2 ) {
-                maintenanceRuns[week] = [Math.floor(25/pace), Math.ceil(25/pace)]
-            }
-            //otherwise divid the remaining miles into two runs rounding down for the first one and up for the second one.
-            else{
-                maintenanceRuns[week] = [Math.floor(weeklyMileage[week][1] / 2), Math.ceil(weeklyMileage[week][1] / 2)]
-            }
+    
+    for(let week = 0; week < duration; week++){
+        //If there is under 25 minutes worth of running for each maintenance run in the week, assign minimum amount of running for each maintenance run
+        if(weeklyMileage[week][1] < (25 / pace) * (runningDays == 7 ? 3 : 2 )) {
+            maintenanceRuns[week] = runningDays === 7 ? [Math.floor(25/pace), Math.ceil(25/pace), Math.floor(25/pace)] : [Math.floor(25/pace), Math.ceil(25/pace)]
+        }
+        //otherwise divid the remaining miles into two runs rounding down for the first one and up for the second one.
+        else{
+            if(runningDays === 7) maintenanceRuns[week] = [Math.floor(weeklyMileage[week][1] / 3), Math.ceil(weeklyMileage[week][1] / 3), Math.floor(weeklyMileage[week][1] / 3)]
+            else maintenanceRuns[week] = [Math.floor(weeklyMileage[week][1] / 2), Math.ceil(weeklyMileage[week][1] / 2)]
         }
     }
+    
     return maintenanceRuns
 }
 
 async function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorkouts, secondaryWorkouts, maintenanceRuns, weeklyMileage, pace){
     //weeklySchedule[week][type of run, amount(# of minutes or miles), unit (minutes or miles), title, innerText]
     let weeklySchedule = Array.from({length: duration}, e => Array(7).fill(0)); 
-    let type, units, amount, maintenanceRunCount, weeklyTotalMileage, text, title
+    let type, units, amount, maintenanceRunCount, weeklyTotalMileage, text, title, currentSWO, currentPWO
     let weeklyScheduleTotals = Array(duration).fill(0)
 
     for(let week = 0; week < duration; week++){
@@ -222,8 +352,9 @@ async function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorko
                     title = `${secondaryWorkouts[week][1]} ${secondaryWorkouts[week][2] === "miles" ? 'mile' : 'min'} ${secondaryWorkouts[week][0] === "Maintenance Run" ? "MR" : secondaryWorkouts[week][0]}`
                     if(secondaryWorkouts[week][0] === "Maintenance Run"){
                         text = `${secondaryWorkouts[week][1]} mile maintenance run`
-                    }else{                    
-                        const currentSWO = await Workouts.findOne({type: secondaryWorkouts[week][0].toLowerCase(), duration: secondaryWorkouts[week][1]})
+                    }else{                                                  
+                        if(secondaryWorkouts[week][4]) currentSWO = await Workouts.findOne({type: secondaryWorkouts[week][0].toLowerCase(), duration: secondaryWorkouts[week][1], text : {$regex : String(secondaryWorkouts[week][4])}})
+                        else currentSWO = await Workouts.findOne({type: secondaryWorkouts[week][0].toLowerCase(), duration: secondaryWorkouts[week][1]})
                         text = currentSWO.text
                     }
                     break
@@ -235,9 +366,25 @@ async function generateWeeklySchedule(duration, weekInfo, longRuns, primaryWorko
                     title = `${primaryWorkouts[week][1]} ${primaryWorkouts[week][2] === "miles" ? 'mile' : 'min'} ${primaryWorkouts[week][0] === "Maintenance Run" ? "MR" : primaryWorkouts[week][0]}`
                     if(primaryWorkouts[week][0] === "Maintenance Run"){
                         text = `${primaryWorkouts[week][1]} mile maintenance run`
-                    }else{                    
-                        const currentPWO = await Workouts.findOne({type: primaryWorkouts[week][0].toLowerCase(), duration: primaryWorkouts[week][1]})
+                    }else{                                                       
+                        if(primaryWorkouts[week][4]) currentPWO = await Workouts.findOne({type: primaryWorkouts[week][0].toLowerCase(), duration: primaryWorkouts[week][1], text : {$regex : String(primaryWorkouts[week][4])}})
+                        else currentPWO = await Workouts.findOne({type: primaryWorkouts[week][0].toLowerCase(), duration: primaryWorkouts[week][1]})
                         text = currentPWO.text
+                    }
+                    break
+                case "secondaryLongRun":
+                    units = "miles"
+                    
+                    if(week + 1 == duration){
+                        amount = 
+                        type = "Maintenance Run"
+                        title = `${maintenanceRuns[week][0]} mile MR`
+                        text = `No Secondary Long Run on race week. Enjoy!`
+                    }else{
+                        amount = longRuns[week] / 2
+                        type = "Secondary Long Run"
+                        title = `${longRuns[week] / 2} mile SLR`
+                        text = `${longRuns[week] / 2} mile secondary long run`
                     }
                     break
                 case "longRun":

@@ -59,10 +59,10 @@ function stepsFor4DaysOfRunning(i){
             preparePWO(i);
             break;
         case 1:
-            if(setPWO(i)) prepareSWO(i);
+            if(setPWO(i)) prepareMR(i);
             break;
         case 2: 
-            if(setSWO(i)) prepareMR(i);
+            if(setMR(i)) prepareMR(i);
             break;
         case 3: 
             if(setMR(i))  {
