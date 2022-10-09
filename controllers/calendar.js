@@ -63,6 +63,20 @@ function generateLongRuns(duration, race, maxLR){
     //Generate long runs array.
     let longRuns = Array(duration).fill(0)  
 
+    if(duration === 12 && race === 26){
+        longRuns[11] = 26.2
+        longRuns[10] = Math.floor(maxLR * 0.6)
+        longRuns[9] = Math.floor(maxLR * 0.8)
+        longRuns[8] = maxLR
+        longRuns[7] = Math.floor(maxLR * 0.8)
+        longRuns[6] = maxLR
+        longRuns[5] = longRuns[7]
+        longRuns[4] = longRuns[6]-1
+        longRuns[3] = longRuns[4]-2
+        longRuns[2] = longRuns[3]-2
+        longRuns[1] = longRuns[2]-2
+        longRuns[0] = longRuns[1]-2
+    }
     if(duration === 16 && race === 26){
         longRuns[15] = 26.2
         longRuns[14] = Math.floor(maxLR * 0.6)
@@ -77,6 +91,28 @@ function generateLongRuns(duration, race, maxLR){
         longRuns[5] = longRuns[7]
         longRuns[4] = longRuns[6]-1
         longRuns[3] = longRuns[4]-2
+        longRuns[2] = longRuns[3]-2
+        longRuns[1] = longRuns[2]-2
+        longRuns[0] = longRuns[1]-2
+    }
+    if(duration === 20 && race === 26){
+        longRuns[19] = 26.2
+        longRuns[18] = Math.floor(maxLR * 0.6)
+        longRuns[17] = Math.floor(maxLR * 0.8)
+        longRuns[16] = Math.floor(maxLR * 0.9)
+        longRuns[15] = maxLR
+        longRuns[14] = Math.floor(maxLR * 0.85)
+        longRuns[13] = maxLR
+        longRuns[12] = Math.floor(maxLR * 0.85)
+        longRuns[11] = maxLR
+        longRuns[10] = Math.floor(maxLR * 0.85)
+        longRuns[9] = maxLR
+        longRuns[8] = longRuns[10]-1
+        longRuns[7] = Math.floor(maxLR * 0.9)
+        longRuns[6] = longRuns[8]-1
+        longRuns[5] = longRuns[7]-1
+        longRuns[4] = longRuns[5]-1
+        longRuns[3] = longRuns[4]-1
         longRuns[2] = longRuns[3]-2
         longRuns[1] = longRuns[2]-2
         longRuns[0] = longRuns[1]-2
