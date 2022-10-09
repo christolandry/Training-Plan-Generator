@@ -1667,10 +1667,6 @@ input, select, textarea {
 		}
 
 /* --------------Added by Christo Landry------------------------- */
-/* .center{
-	margin-top: 10px;
-	margin-bottom: 10px;
-} */
 
 .flex{
 	display: flex;
@@ -1742,4 +1738,13 @@ input, select, textarea {
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+#stageChooseDays table button{
+	letter-spacing: normal;
+}
+
+#create h2.major{
+	width: 100%;
+	text-align: center;
 }
