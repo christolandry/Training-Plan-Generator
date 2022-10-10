@@ -1748,3 +1748,8 @@ input, select, textarea {
 	width: 100%;
 	text-align: center;
 }
+
+#holder .btn{
+	padding-top: 0;
+	padding-bottom: 0;
+}

@@ -32,7 +32,8 @@ Creating a full-stack web app using JavaScript, Node.js, & Express.  Some of the
 <ul>
   <li>Fix bugs</li>
     <ul>
-        <li>Calendar doesn't appear on iPhones (but does on iPad, desktop, and android phones)</li>
+        <li>Have screen only show landscape mode on mobile</li>
+        <li>Some text is translated down slightly</li>
     </ul>
   <li>Add in race distance options other than the marathon</li>
   <li>Move the current client side JavaScript used to create the calendar server side</li>
