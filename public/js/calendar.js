@@ -230,19 +230,19 @@ $.extend(Date.prototype, {
     
 })(jQuery);
 //----------------Set screen to portrait under 800px-----------------
-if(screen.width <= 800){
-  // screen.orientation.lock("landscape")
-  // go fullscreen 
-  let de = document.documentElement;
-  if (de.requestFullscreen) { de.requestFullscreen(); }
-  else if (de.mozRequestFullScreen) { de.mozRequestFullScreen(); }
-  else if (de.webkitRequestFullscreen) { de.webkitRequestFullscreen(); }
-  else if (de.msRequestFullscreen) { de.msRequestFullscreen(); }
+// if(screen.width <= 800){
+//   // screen.orientation.lock("landscape")
+//   // go fullscreen 
+//   let de = document.documentElement;
+//   if (de.requestFullscreen) { de.requestFullscreen(); }
+//   else if (de.mozRequestFullScreen) { de.mozRequestFullScreen(); }
+//   else if (de.webkitRequestFullscreen) { de.webkitRequestFullscreen(); }
+//   else if (de.msRequestFullscreen) { de.msRequestFullscreen(); }
 
-  // lock orientation
-  screen.orientation.lock("landscape");
-  console.log("This only works on phones, not chrome developer tools")
-}
+//   // lock orientation
+//   screen.orientation.lock('landscape');
+//   console.log("This only works on phones, not chrome developer tools")
+// }
 
 
 //-----------------------Add Events to the Calendar----------------------------
