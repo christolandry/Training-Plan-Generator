@@ -224,8 +224,8 @@ $.extend(Date.prototype, {
         thismonthcss: "current",
         lastmonthcss: "outside",
         nextmonthcss: "outside",
-        mode: "month",
-        // mode: screen.width > 800 ? "month" : "week", //added to work on responsiveness.
+        // mode: "month",
+        mode: screen.width > 800 ? "month" : "week", //added to work on responsiveness.
     data: []
   }, jQuery, window, document);
     
