@@ -139,3 +139,39 @@ table tbody tr{
     font-size: .8em;
   }
 }
+
+@media only screen and (max-device-width: 800px) and (orientation:portrait) { 
+	body {
+	        /* Rotate the content container */
+			transform: rotate(-90deg);
+			transform-origin: left top;
+			/* Set content width to viewport height */
+			width: 100vh;
+			/* Set content height to viewport width */
+			height: 100vw;
+			overflow-x: hidden;
+			position: absolute;
+			top: 100%;
+			left: 0;
+	}
+	#wrapper.calendarWrapper{
+		min-height: 100vw;
+		max-height: 100vw;
+		min-width: 100vh;
+		max-width: 100vh;
+	}
+	#main.plan article{
+		width: 90vh;
+		max-width: 1000px
+	}
+  .calendar-table {
+    margin: 0 auto;
+    width: 85vh;
+  }
+  .calendarWrapper .container.theme-showcase{
+    width: 100%;
+  }
+  .calendar-day{
+    min-width: 14vw;
+  }
+}
