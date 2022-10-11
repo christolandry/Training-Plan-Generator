@@ -1753,3 +1753,32 @@ input, select, textarea {
 	padding-top: 0;
 	padding-bottom: 0;
 }
+
+#terminology h2{
+	text-align: center;
+	width: 100%;
+}
+
+#terminology {
+	color: rgba(255, 255, 255, 1);
+} 
+
+#main.plan article{
+	width: 90vw;
+	max-width: 1000px
+}
+
+#wrapper  #header{
+	background-image: none;
+}
+
+.plan article h2,h3,h4,h5,h6,p{
+	text-align: left;
+	letter-spacing: normal;
+	width: 100%;
+}
+
+#footer p{
+	text-align: center;
+	color:grey
+}

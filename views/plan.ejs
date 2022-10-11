@@ -9,6 +9,7 @@
 		<title>Training Plan Creator</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
 		<link rel="stylesheet" href="css/main.css" />
 		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
@@ -21,13 +22,284 @@
 		<!-- Wrapper -->
 			<div id="wrapper" class="calendarWrapper">
 				<div class="container theme-showcase">
-          <div id="holder">
+          <div id="header">
           </div>
         </div>
       
+        <div id="main" class="plan">
+          <!-- Terminology -->
+            <article id="terminology">
+              <h2 class="major">Terminology</h2>
+              <div class="flex">
+                <h3>Maintenance (aka regular or normal) Run (MR)</h3>
+                <h6>What is a maintenance Run?</h6>
+                <p>It's you going out for a run at normal pace.  It is called a maintenance day instead of a recovery day because it is not meant to be a jog or shuffle.  It is a day to continue development as a runner.</p>
+                <h6>How do I know if I'm going the right speed?</h6>
+                <p>The pace should be comfortable lacking any straining or pushing.  Conversely it needs to be a quality effort to acquire certain adaptive responses.  This pace will differ from day to day depending on what shape you're in, how recovered you are, the weather, the terrain, etc.</p>
+              
+                <h3>Long Run (LR)</h3>
+                <h6>What is a Long Run?</h6>
+                <p>It's the longest planned regular run of the week.  It is done all at once while minimizing breaks as much as possible.</p>
+                <h6>Why should I run so long at once?</h6>
+                <p>The Long Run stands alone in the uniqueness of its benefits.  The sheer duration of the long run allows the body to further capillarization (creation of fine blood vessels) most efficiently, teach itself to oxidize fat as an energy source (the by-product being the protection of your limited stores of muscular glycogen), stress your fast-twitch muscle fibers, and further mitochondrial density.</p>
+                <h6>How do I know I'm doing it right?</h6>
+                <p>In order conduct a proper long run the body must be prepared in terms of hydration and energy and the effort must be continuous to be of maximal benefit.  Therefore, avoid breaks as much as possible and do not enter into your long efforts without having at least one solid meal in your stomach (if your blood sugar is low, you will lessen the effect of the long run).</p>
+                <h6>How do I know if I'm going the right speed?</h6>
+                <p>The goal speed/effort for the long run is the same as regular runs.  It should be a comfortable pace lacking any straining or pushing.  Conversely it needs to be a quality effort to acquire certain adaptive responses.  This pace will differ from week to week depending on what shape you're in, how recovered you are, the weather, the terrain, etc. </p>
+
+                <h3>Maintenance Run Plus (MR+)</h3>
+                <h6>What is a Maintenance Run Plus?</h6>
+                <p>It's the second longest planned regular run of the week, a second but shorter long run.  It is done all at once while minimizing breaks as much as possible.</p>
+                <h6>Why not do two long runs instead of this shortened long run?</h6>
+                <p>A long run takes a longer to recover from than a normal effort.  To fit in enough recover time between workouts there is not enough time in the week to add in a second workout without compromising another aspect of the training week.</p>
+                <h6>How do I know if I'm going the right speed?</h6>
+                <p>The goal speed/effort for the long run is the same as regular runs.  It should be a comfortable pace lacking any straining or pushing.  Conversely it needs to be a quality effort to acquire certain adaptive responses.  This pace will differ from week to week depending on what shape you're in, how recovered you are, the weather, the terrain, etc. </p>
+
+                <h3>Doubles</h3>
+                <h6>What is a double?</h6>
+                <p>A double is doing two runs on the same day.</p>
+                <h6>What days do I double?</h6>
+                <p>Days that you would double are, in order of choice, maintenance run days, then maintenance run plus days and lastly workout days.  Notice that there are no doubles on easy or long run days.</p>
+                <h6>What speed do I do a double at?</h6>
+                <p>he second run on a double day, as in the run in addition to the normal run for that day, is a maintenance run.  So it would be done at maintenance run pace.  For example, if you were doubling on a workout day and did the workout in the morning, the "shakeout" run you did in the evening to make it a double is a maintenance run and done at maintenance run pace.</p>
+                <h6>When should I do doubles / why should I do doubles?</h6>
+                <p>Doubles are done when your mileage reaches a point that you need more miles on a maintenance run day than the longest allowed maintenance run.  For example, if your maintenance runs are capped at 75 minutes and you need 90 minutes of running on a maintenance run day you would need to double.  Other times to double are when you're sick/congested as running helps with congestion or when you're injured and your body can't handle a longer effort but it can do two shorter efforts.</p>
+                <h6>Limits on doubles</h6>
+                <p>Minimum time of a run - 30 minutes (unless told otherwise)</p>
+                <p>Maximum time of a maintenance run - 75 minutes (unless told otherwise)</p>
+                <p>Time between - Minimum of 5 hours, 6 is better.  If you put fewer hours in-between runs then you're still at the same risk for injury as a single run (your body hasn't recovered enough) while losing the benefit of doing the mileage as one run.</p>
+
+                <h3>Workout Basics</h3>
+                <h6>What is a workout?</h6>
+                <p>A workout is a run designed to be done in a specific way and a predetermined effort level.  Simply put, these are the non-maintenance run/non-long run/non-recovery days of the week, the "harder" days.  Examples are intervals, hill repeats, tempos, and fartleks.</p>
+                <h6>Splits</h6>
+                <p>I need splits from the workout.  This data, in conjunction with your feedback on how it went, effort level, conditions, etc. help me make the best plan for you, and to assign the correct paces for you. </p>
+                <p>Examples of when to take splits:</p>
+                <ul>
+                  <li>Tempos: Every mile or half mile (if your pace is 8 min/mile or higher)</li>
+                  <li>Progression Run: Same as tempo, and at the start of each new pace grouping</li>
+                  <li>Fartlek: At the start and end of each on section (this will give me data for both the on and off sections as there is no stopping)</li>
+                  <li>Intervals: At the start and end of each hard portion (this will give me data for the on sections and how long you took for rest, no stopping the watch)</li>
+                </ul>
+                <h6>Parts of a workout:</h6>
+                <ul>
+                  <li>
+                    <h6>Warm Up</h6>
+                    <p>The warm up is run done at maintenance run effort to warm up your muscles so that they are ready for the workout and to prevent injury to them.  The location for the warm up does not need to be the same as the workout, example: if you're doing a workout on the track, the warm up can be in the neighborhood around the track.  The normal warm up time is 20 minutes as that is approximately how long it takes for your muscles to warm up.</p>
+                  </li>
+                  <li>
+                    <h6>Active Stretching / Drills</h6>
+                    <p>This portion is done to further loosen up your muscles. Again this prevents injury and allows your body to be ready for the higher effort and pace of the workout portion.  This portion usually does not exceed 10-15 minutes as we don't want your legs to.  Active stretching is holding stretches for 2-3 seconds and doing it multiple times.  The main ones are found below, take two additional normal steps between the exercise to let the muscles fully relax and to help your balance.</p>
+                    <ul>
+                      <li><p>
+                        Knee Hugs - <a href="https://youtu.be/1WSQSNlu_OQ?t=4">https://youtu.be/1WSQSNlu_OQ?t=4</a>
+                      </p></li>
+                      <li><p>
+                        Hamstring - <a href="https://youtu.be/jG1DPrIsDn4?t=20">https://youtu.be/jG1DPrIsDn4?t=20</a> (keep toes pulled back towards you on your planted foot)
+                      </p></li>
+                      <li><p>
+                        Quads - <a href="https://youtu.be/yjILII-tA9U?t=27 ">https://youtu.be/yjILII-tA9U?t=27 </a>
+                      </p></li>
+                      <li><p>
+                        Side Squat - <a href="https://www.youtube.com/watch?v=4Oq6WXBmsUg">https://www.youtube.com/watch?v=4Oq6WXBmsUg</a> (watch his right leg, completely straight, and you don't need your hands out in front of you like that)
+                      </p></li>
+                      <li><p>
+                        Calf - <a href="https://www.youtube.com/watch?v=b8iRCSHslKY">https://www.youtube.com/watch?v=b8iRCSHslKY</a>
+                      </p></li>
+                      <li><p>
+                        Achilles - Same as above, but when you lean in, have your knee slightly bent.
+                      </p></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h6>Strides</h6>
+                    <p>2-3 100 meters (or so) strides to get your blood flowing get your body ready for the faster paces of the workout.</p>
+                  </li>
+                  <li>
+                    <h6>Workout Portion</h6>
+                    <p>This is where you execute the actual workout. Be it a 20 minute tempo run or a 60 minute fartlek.  The specific details for your workout will be posted each time on your calendar.</p>
+                  </li>
+                  <li>
+                    <h6>Cool Down</h6>
+                    <p>The cool down is a run done at maintenance run effort to help your muscles start the recovery process from the workout.  You do not need to go immediately into your cool down when you finish the workout.  Take your time to recover a little, stretch, and then move into the cool down.  Just don't take so long that your muscles get tight and cold.  Note this will likely be slower than your warm up, even though they are done at the same effort because you just ran a hard workout.  The location for the cool down does not need to be the same as the workout, example: if you're doing a workout on the track, the cool down can be in the neighborhood around the track.  Generally this is also 20 minutes, however if you are running short on time, cut the cool down, not the warm up.</p>
+                  </li>
+                  <li>
+                    <h6>Static Stretching</h6>
+                    <p>Static stretching (where you hold the stretch for 20-30 seconds) is done after the workout.  This is done to prevent injuries and to help you feel better on your next run.</p>
+                  </li>
+                  <li>
+                    <h6>Injury Prevention</h6>
+                    <p>If you have any injury concerns, a tight hamstring or calf for example, this is when you would take extra steps to help them along in their recover or prevent them from getting worse.  Such steps include foam rolling, icing, electric stim (if you have access), and PT drills.  While they may not be fun, you'll have to do them anyway when the nagging injury worsens!</p>
+                  </li>
+                </ul>
+                <h6>Common Themes in workouts</h6>
+                <ul>
+                  <li>
+                    <h6>Equal or Negative Splits</h6>
+                    <p>Negative splits mean you ran the second split faster than the first split.  Positive splits are running the second split slower than the first split.  Generally speaking, running negative splits feels easier, and results in a faster time.  For example, all world records at the 1500m distance and above have been set running negative splits.  Unless other wise specified, we want ALL workouts to follow the equal or negative split progression.  Note: as your body warms into a workout you will naturally get a little faster throughout the workout.</p>
+                    <p>What if I go out too fast?!  It happens, no big deal.  With time, practice and actively concentrating on it you will be able to judge pace much more accurately and it'll become natural like any other learned skill.  Now, what to do about it. </p>
+                      <p>Example:  You are supposed to run one mile in 8:00 min.  You went out in 1:55 (5 seconds too fast).  Should you try to run the next lap at:</p>
+                      <ul>
+                        <li>A. 2:05 min, to get back to 2:00 per lap average.</li>
+                        <li>B. 2:00 min, the pace you were supposed to hit at the start.</li>
+                        <li>C. 1:55 min, to continue the pace you set in the first lap.</li>
+                      </ul>
+                      <p>The answer is B, you should try to get back onto the pace you were told to hit originally.  If you end up at 7:55 because you went out 5 seconds too fast in the first lap, that is OK.</p>
+                      <p>Why not A?  One thing we want to practice is running a smooth, consistent pace throughout workouts and races.  Yo-Yo-ing the pace is the exact thing that we are trying to avoid.</p>
+                      <p>Why not C?  While we went out too fast, we don't want to compound the error by running too fast on consecutive laps.  While you might be able to withstand that for one repeat, you will feel the effects in the next repeats and probably won't be able to finish the workout at that pace.  If you can let me know as I need to increase the pace of your workouts!</p>
+                  <p>What if I go out too slow?!  Well, just like above, with practice you'll get better at feeling pace.  What to do about it?  If you go out 15 seconds slower than pace for the first lap in a mile (4 laps), then you would need to try to run 5 seconds under pace for the next three laps to hit your goal time.  In general it's ok to go under pace to make up for a slow start, but not to go over pace to slow down from a fast start.</p>
+                  </li>
+                  <li>
+                    <h6>Gathering Splits</h6>
+                    <p>While you run workouts you will need to gather splits (data) so that we know how the workout went.  In general terms, reset your watch to 0:00 at the start of the workout (after the warm up) and then save the data before you start your cool down.  What type of splits you should gather depends on the workout type:</p>
+                    <ul>
+                      <li>Tempo Runs - Depends on your pace, if you're doing it on the track or a path with marks, every mile or half mile (if you're going 7:30 pace or slower).  If you're using your garmin and going on an unmarked path, hitting split every 5 minutes is good.</li>
+                      <li>Fartlek - This one is effort based, just hit split at the end of each on and off section.</li>
+                      <li>Hills - Split the uphill portions</li>
+                      <li>Intervals - Split each interval and if it's longer than a mile, each mile.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h6>Training at a specific pace or training at an effort level:</h6>
+                    <p>A frequent question is, if x:xx is the pace I want to run for a race or x:xx is the the pace I'm supposed to training at to be able to run my goal why are we not training at that pace every day?</p>
+                    <p>I dislike training at a certain pace, just because that's the pace for goal.  Here's why.</p>
+                    <p>There are three possibilities here.</p>
+                    <p>First, it's too fast of a pace for you right now.  That means that you're either going to be going over effort level on each workout (and not getting as much out of it and having a lot more to recovery from) or you'll hit the wall and not being able to complete the workout without slowing down significantly which means you're not getting the full benefit out of the workout (duration is important).</p>
+                    <p>Second, it’s too slow of a pace for you.  At that point you’re not improving as fast as you can be and on some workouts since you're going too slowly you won't generate the reactions we're looking for an you won't get the designed benefit from the workout.</p>
+                    <p>Third, it’s the right pace, great! But maybe it was only the right pace for you on that day.  What happens if the next time you do the workout the weather is 20 degrees warm or colder?  Wet and windy vs dry and calm?  You raced the weekend before and are not fully recovered compared to a day when you are fully recovered? You’re further into the season and you’ve gotten fitter?  The pace that might have been right on one day may not be right for you on another day as conditions are different each time you go out there.</p>
+                    <p>Yes we can use a pace range to have an idea of where you want to be on any given day, but it’s not absolute and it’s not always correct under the circumstances.  I see pace as a crutch, it’s useful at the beginning, but once you get accustomed to how workouts should feel it’s not something that you should need, you should be able to feel if the effort level was right or not.</p>
+                  </li>
+                </ul>
+
+                <h3>Tempo Run</h3>
+                <h6>What is a Tempo Run?</h6>
+                <p>The tempo run is a workout designed to improve your lactate threshold, the point at which the body switches from its aerobic pathways into its anaerobic ones.  However, the improvement of your threshold happens in a different manner than some of you are accustomed.  In order to improve your threshold, you need to work above the threshold for an extended period of time and not below it (for example, if your threshold is 9:24 per mile, you would want to operate ideally at 9:25-9:30 pace per mile for the duration of the workout). </p>
+                <h6>Therefore, it is possible to run too hard on a tempo run.</h6>
+                <p>If you run too hard, you are stressing your aerobic capacity (which we do through the fartleks) and not your lactate threshold (also known in our terminology as anaerobic conditioning).  To prevent this, the tempo will require some thought and patience.  The tempo run will start around 20 minutes, we will add to it as you progress.  The key indicator of a successful tempo run would be the progression of splits.  A workout of 9:30, 9:26, 9:23, 9:18, would be far more preferable and beneficial than a progression of 9:18, 9:23, 9:26, 9:38. </p>
+                <p>It may take some time to find your starting point, just be intelligent, patient, and harness your aggressiveness early on.  It is important to learn to stress the appropriate system for the workout detailed.</p>
+                <h6>Where do I do a tempo run?</h6>
+                <p>You want to avoid excessively hill terrain for a tempo run as that makes it more difficult to constantly be running the same effort (not pace, effort).  Also someplace where you can get reliable mile splits is great.  Additionally a tempo run is a continuous efforts, there is no stopping, with this is mind a location should be choose so that there are no stoplights or other areas which might cause a break in the effort.  A track fits these criteria but can be boring, personally I prefer greenways that have mile marks as they are less repetitive, although I do utilize the track for tempos on occasion.  Additionally if you have a GPS watch that opens up more options as long it is reliable.</p>
+                <h6>How do I know if I’m going the right speed?</h6>
+                <p>As with most workouts this one is based on effort.  80%-85% is about the range for a tempo run.  One way to gauge is, could you run 5-10 seconds faster for another 5 min, but not much more than that?  Then you’re probably going the right pace.  This is not a workout where you’re falling down on the track in exhaustion afterwards, but it is a workout and you will be tired. </p>
+                <h6>I don't think I did it right.</h6>
+                <p>That's ok.  You'll have plenty of opportunities to practice tempo runs.  The idea is to figure out what went wrong and to try to avoid it in the future.  The biggest thing to work on is the negative progression of splits (each mile is equal to or faster than the one before).  After that is keeping the mile splits within a somewhat narrow (10-15 second) range while accounting for terrain changes (uphill miles will be slower, etc.).</p>
+
+                <h3>Brisk Run</h3>
+                <p>A brisk run is a tempo run but a gear back.  A gear is a pace you can settle into and click off reliable splits.  So a gear back from a tempo run would be ~10 sec / mile.</p>
+
+                <h3>Hard Tempo</h3>
+                <p>This is similar to a tempo run but shorter in duration than your recent tempos and at a higher pace.  We'll start out fast and stick that pace for the almost the entire duration.  If you desire you can close over the last 5 minutes of the hard tempo, but no kicks at the end the last 400m or so, it has to be over the whole last 5 minutes.</p>
+
+                <h3>Fartlek</h3>
+                <h6>What is a Fartlek?</h6>
+                <p>Fartlek means, "speed play" in Swedish.  It's a workout that combines hard and medium running.  An example fartlek would be 4 x 3 on / 2 off.  This means that you would run hard for three minutes, then medium for two minutes, and repeat that four times for a total of 20 minutes.</p>
+                <h6>Could you be a little more specific?</h6>
+                <p>Contrary to popular belief, the most important portion of the fartlek is the "off" portion.  The goal of the fartlek is to include periods of fast running while keeping an elevated heart rate the entire time.  That being said the first portion of the workout to focus on is the "off" portions.  They should be at maintenance run (normal run) pace.  If you find that after a hard section that you can not sustain maintenance run pace for the entirety of the "off" portion then the pace for the "on" portions needs to be slowed.  Once you can continually complete the "off" sections at normal run pace then you can start speeding up the pace of the "on" portions.</p>
+                <h6>Where do I do a fartlek?</h6>
+                <p>Fartleks are meant to be continuous efforts, there is no stopping, shuffling, or jogging involved.  Thus a location must be chosen with this in mind.  Hills are fine for this workout as it is effort and time based workout.  Soft surfaces are great for this workout.</p>
+                <h6>How do I know if I’m going the right speed?</h6>
+                <p>While the goal of the workout is to be at 95% effort level, this workout will be tiring when done correctly, you will not be at 95% immediately.  The first few "on" sections will be difficult, but done right, your pace on the them will be negative throughout the workout.</p>
+                <h6>I don't think I did it right.</h6>
+                <p>That's ok.  You'll have plenty of opportunities to practice fartleks.  The idea is to figure out what went wrong and to try to avoid it in the future.  The biggest thing to work on is the keeping the "off" portions at maintenance run pace and then working towards negative spliting the "on's" (each mile is equal to or faster than the one before).</p>
+
+                <h3>Progression Run</h3>
+                <h6>What is a Progression Run?</h6>
+                <p>The progression run is a workout that is very similar to a tempo run.   You will be running for the entire duration of the workout with no breaks.  The progression run will be broken into segments (no stopping in between, one flows into the next) of different, increasing paces.  For example, if your tempo runs usually start at 9:30 and work down to 9:15/9:10 your progression run would start at 9:45 and work down to 9:00.  If you had a 30 minute tempo run, every 5 minutes your pace would drop 5-10 seconds/mile such as: 9:45, 9:35, 9:25, 9:15, 9:05, 9:00.  It is not necessary to hit each pace exactly.  The goal is for increasing effort each segment in an intelligent fashion.</p>
+                <h6>Is it possible to go to hard on a progression run?</h6>
+                <p>Yes, early on is when it happens the most.  The goal is to slowly increase your pace over the duration of the workout.  If you make too big of a jump in at the start of the workout, make a smaller jump the next time.  We want an equal to negative progression of splits for the entire workout.  The last 2-3 segments will be below your tempo pace and thus the effort level on these segments will be significant.</p>
+                <h6>Where do I do a progression run?</h6>
+                <p>The terrain is similar to that of a tempo run.  You want to avoid excessively hill terrain for a progression run as that makes it more difficult to constantly be running the same effort (not pace, effort).  Also someplace where you can get reliable mile splits is great.  Additionally a progression run is a continuous efforts, there is no stopping, with this is mind a location should be choose so that there are no stoplights or other areas which might cause a break in the effort.  A track fits these criteria and while boring, is very useful in giving you splits to make sure you're hitting the increasing pace goals.  Additionally if you have a GPS watch that opens up more options as long it is reliable. </p>
+                <h6>How do I know if I’m going the right speed?</h6>
+                <p>As with most workouts this one is based on effort.  The beginning of the workout will feel easy, it's not that much faster than your maintenance run pace.  However the meat of the workout is the middle to the end, where at the end you will be pushing very hard.  Also the absence of positive splits through the workout is an indicator you are doing well.</p>
+                <h6>I don't think I did it right.</h6>
+                <p>That's ok.  You'll have plenty of opportunities to practice.  The idea is to figure out what went wrong and to try to avoid it in the future.  The biggest thing to work on is the negative progression of splits (each mile is equal to or faster than the one before).  After that is keeping the segment splits closer to their goals while accounting for terrain changes (uphill miles will be slower, etc.).</p>
+                
+                <h3>Hill Repeats</h3>
+                <h6>What are Hill Repeats?</h6>
+                <p>Hill repeats are a workout where you run hard up the hill (90% effort) and maintenance run pace down the hill.  This is done multiple times, an example would be 10 x 75 second hills.</p>
+                <h6>What do you mean by 75 second hill?</h6>
+                <p>For the first repeat, find your starting spot and then start your watch when you start the repeat.  When you get to about 3 seconds over your allotted time, for this example 78 seconds, that is your end point.  Find a marker so you know where it is for the next repeats.  For the rest of the repeats, go from your starting point to the ending point you picked out on the first repeat, even it's it's not exactly 75 or 78 seconds.  This allows you to see if you are getting faster or slower over the duration of the workout.  Normally as your body warms up into the hill repeats you'll start going faster and the average of your times will be around 75 seconds.  It doesn't not need to be exact.</p>
+                <h6>Could you be a little more specific?</h6>
+                <p>Contrary to popular belief, the most important portion of the hill repeat (like the fartlek) is the "off" portion.  The goal of hill repeats is to keep an elevated heart rate the entire time.  This is accomplished through running the down hill portions at maintenance run speed.  When you hit the top, immediately turn around and start your run down and when you hit the bottom immediately turn around and start the uphill.  Yes, this will be tough but remember that you are not going all out up the hill, only 90% effort.</p>
+                <h6>Where do I do hill repeats?</h6>
+                <p>A hill that has a grade of about 4%-5%.  This can be checked on various websites, I use the route builder on mapmyrun.com and check the elevation box to see the grade when I look for a hill to do repeats on.  It should be continuous with no drops or flat sections, it should have minimal traffic to avoid injury and while soft surfaces (with good footing) are preferred it is by no means necessary.</p>
+                <h6>How do I know if I’m going the right speed?</h6>
+                <p>While the goal of the workout is to be at 90% effort level, this workout will be tiring when done correctly, you will not be at 90% immediately.  The first few uphills portions will be difficult, but done right, your pace on the them will be negative throughout the workout.</p>
+                <h6>I don't think I did it right.</h6>
+                <p>That's ok.  You'll have plenty of opportunities to practice hills.  The idea is to figure out what went wrong and to try to avoid it in the future.  The biggest thing to work on is the keeping the downhill portions at maintenance run pace and then working towards negative spliting the uphills (each one is equal to or faster than the one before). </p>
+                
+                <h3>Intervals</h3>
+                <h6>What are track intervals?</h6>
+                <p>Intervals are a workout where you run prescribed distances on the track and a prescribed pace/time with a prescribed rest.  It is a more rigid workout format with little room for variance.  Examples would be two sets of four times four hundred meters (one lap) at eight minutes per mile with a minute and thirty seconds between reps and three minutes rest between sets.  It would be written as: 2 x 4 x 400 at 8:00 with 1:30 rest, 3:00 between sets.</p>
+                <h6>Where do I do a intervals run?</h6>
+                <p>The most common spot is a track.  If that is not available, a flat path/greenway with good footing, little traffic and appropriate distance markers will suffice.</p>
+                <h6>What do I need to know and focus on?</h6>
+                <ul>
+                  <li>When you start each repeat, start a few steps behind the line so you can run into the repeat, we're not looking to start with toes on the line as you might at the start of a track race. </li>
+                  <li>
+                    Rest
+                    <ul>
+                      <li>If not specified, this can be done either walk, jogging or a combination.  Generally if the rest is a minute or longer a little sprinter shuffle (very slow jogging) will help you stay loose for the next interval.</li>
+                      <li>How specific is this? Very.  If you are told to take 1 minute rest between repeats, the expectation is that you will start the next repeat after 1 min +/- 1-2 seconds of rest.  Starting at 75 seconds instead of a minute increases rest by 25% and the amount of rest is a very important component to a workout and what you get out of it.  This means you will need to keep an eye on your watch and make sure you're at the line when you need to start.</li>
+                    </ul>
+                  </li>
+                  <li>Intervals - Unless otherwise specified the goal for each workout will be to go equal or negative throughout the workout.  That means if you're running 6 x Mile, that each mile will be an equal time or faster than the one before.  A good progression would look like:  8:00, 7:58, 7:59, 7:55, 7:56, 7:52.  As you can tell, it doesn't need to be perfect, but the downward trend is what we're looking for.</li>
+                </ul>
+                <h6>That was hard!  I could barely hit the times I was given!</h6>
+                <p>Perfect!  Then they were the right times for you.  Track intervals are some of the hardest workouts effort wise, they make you run hard, and then give you just enough time to recover to go run really hard again!</p>
+                <h6>What if I didn't hit the times?</h6>
+                <p>That's ok.  We'll adjust times for the next workout.  Make sure to let me know what you think it was that kept you from hitting the times.  There are also many outside factors that could result in a sub par day such as, very hot/cold temperatures, wind, lack of sleep, dehydration, sickness, ect.</p>
+
+                <h3>Tempo K's (1,000m), Tempo Miles (1,600m), Tempo xxx</h3>
+                <h6>Logistics</h6>
+                <p>We want a track for this workout if possible.  Otherwise you'll need to measure out a 1,000m stretch of fairly flat terrain that you can run fast on with no stops.</p>
+                <p>On the track: Start on the start finish line.  The end will be halfway across the track at the 200m start.  Just hang out there for your 1 minute rest, jog or shuffle around a little so you're not stiff for the next rep.  Start you 2nd one at the 200m mark so that you'll end at the start/finish line.  If you want, bring a water bottle and place it at the start/finish area so you can get a drink every 2 reps if you want.</p>
+                <h6>Effort Level:</h6>
+                <p>This workout is very similar to a tempo run in effort and like the tempo run it's a workout designed to improve your lactate threshold.  So we want you to run close to your lactate threshold, the point at which the body switches from its aerobic pathways into its anaerobic ones.  You will be going faster than your tempo pace but on the other hand you'll be getting rest every kilometer.  The short rest keeps your heart rate elevated the whole time.</p>
+                <h6>Can I run too fast?</h6>
+                <p>Yes, you can overrun the effort.  If you run too hard, you are stressing your aerobic capacity (which we do through the fartleks) and not your lactate threshold (also known in our terminology as anaerobic conditioning).  To prevent this, the tempo will require some thought and patience.  The tempo run will start around 20 minutes, we will add to it as you progress.  The key indicator of a successful tempo run would be the progression of splits.  A workout of 9:30, 9:26, 9:23, 9:18, would be far more preferable and beneficial than a progression of 9:18, 9:23, 9:26, 9:38. </p>
+                <p>It may take some time to find your starting point, just be intelligent, patient, and harness your aggressiveness early on.  It is important to learn to stress the appropriate system for the workout detailed.</p>
+                <h6>How do I know if I’m going the right speed?</h6>
+                <p>As with most workouts this one is based on effort.  80%-85% is about the range for a tempo run.  One way to gauge is, could you run 5 seconds faster for another kilometer, but not much more than that?  Then you’re probably going the right pace.  This is not a workout where you’re falling down on the track in exhaustion afterwards, but it is a workout and you will be tired.</p>
+
+                <h3>Stretching</h3>
+                <p>There are two main types of stretching, active and static.</p>
+                <ul>
+                  <li>Active Stretching - is holding the stretch for 2-3 seconds but doing the stretch multiple times (5-10). </li>
+                  <li>Static Stretching - is holding the stretch for 20-30 seconds but only doing the stretch 2-3 times.</li>
+                </ul>
+                <p>We want to do active stretching before running/workouts/lifting and static stretching when you're done with the run/workout</p>
+
+                <h3>Strides</h3>
+                <h6>What:</h6>
+                <p>For strides I want 6 x 150m on the track or 6 x 22 seconds on a relatively flat surface you are not afraid to run fast on.  Rest is 1-2 minutes, when you feel ready for the next one.  We're not concerned with the rest too much here, just don't take so much you get stiff/cold.</p>
+                <h6>How to do them:</h6>
+                <p>A stride is a controlled sprint.  Your speed is 95% effort, so almost an all out sprint but with a solid element of control.  There is no flailing, no form breaking down, and you should feel good during these.  Use the first and last couple seconds to speed up and slow down.  If you wish to use spikes (on the track) or flats that is ok.</p>
+                <h6>Why:</h6>
+                <p>The purpose here is to work on form and to give you an opportunity to run faster than race pace.  These will also make your legs feel looser and have more pop the next day.</p>
+                <h6>When:</h6>
+                <p>These are done immediately after your run, if you would like a minute or two of light active stretching before doing them that is ok as well.  We do not want you to cool down or tighten up before you do your strides.</p>
+                <h6>Pre-Workout Strides:</h6>
+                <p>When doing strides before your workout (and after your active stretching), you only need to do 2-3 x 100m or 17 seconds. </p>
+
+                <h3>Long Run Workout</h3>
+                <h6>What is a Long Run Workout?</h6>
+                <p>A long run workout is a combination of a long run and a workout.  It has the length of a long run, is continuous, but includes portions of faster, harder running that make the difficulty equal to that of a workout.  The general form this takes is: a longer warmup, set portions of medium, hard and easy running, a cool down.</p>
+                <h6>What do you mean: medium, hard and easy running?</h6>
+                <p>This will be explained in the workout description, but here's an example: </p>
+                  <p>Example: 8 segments of 9 minutes going: medium, hard, easy, medium, hard, easy, medium, hard.  If their normal tempo pace is ~7:25 then it might look like this:  Medium: 7:50-8:00 pace, Hard: 7:35-7:45 pace, Easy: 8:10-8:20 pace</p>
+                <h6>Therefore, it is possible to run too hard on a tempo run.</h6>
+                <p>We're not looking to get quite down to marathon pace on this workout.  We'll be functioning slightly above it.  We want to work into things gradually being intelligent, patient, and harnessing your aggressiveness early on.  Don't worry if it feels easy at the start, these are some of the workouts that have left me feeling the most drained out of any I've done.</p>
+                <h6>Where do I do a long run workout?</h6>
+                <p>You'll want to choose an area similar to that of a tempo run.  You want to avoid excessively hill terrain for a long run workout as that makes it more difficult to constantly be running the same effort (not pace, effort).  Also someplace where you can get reliable mile splits is great.  Additionally a long run workout is a continuous efforts, there is no stopping, with this is mind a location should be choose so that there are no stoplights or other areas which might cause a break in the effort.  While a track works for a tempo run, these efforts are too long for tracks and must be done somewhere else, personally I prefer greenways that have mile marks.  Additionally if you have a GPS watch that opens up more options as long it is reliable. </p>
+                <h6>What if it's windy/cold/hot/hilly/not perfect conditions</h6>
+                <p>As with most workouts, I'm giving you the paces based off of your previous workouts.  If the conditions are more difficult than normal for you, just adjust the times accordingly, hit them and then report back the reason for the change.</p>
+              </div>
+            </article>
+        </div>
         <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">&copy; <a href="https://AscentRunningCoaching.com">Ascent Running Coaching LLC</a> | <a href="/logout" class ="">Log Out</a>.</p>
+          <p class="copyright">&copy; <a href="https://AscentRunningCoaching.com">Ascent Running Coaching LLC</a> | <a href="#terminology">Terminology</a> | <a href="/logout" class ="">Log Out</a>.</p>
         </footer>
         
       

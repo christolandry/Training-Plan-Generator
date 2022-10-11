@@ -7,14 +7,4 @@ router.get('/', ensureAuth, calendarController.getCalendar) //requested from aut
 
 router.post('/postGenerateCalendar', ensureAuth, calendarController.postGenerateCalendar) //requested when generateing the training plan
 
-// router.post('/createTodo', todosController.createTodo) //requested from form on todos.ejs
-
-// router.put('/markComplete', todosController.markComplete) //Requested from client side main.js
-
-// router.put('/markIncomplete', todosController.markIncomplete) //Requested from client side main.js
-
-// router.put('/updateStatus', todosController.updateStatus) //Requested from client side main.js
-
-// router.delete('/deleteTodo', todosController.deleteTodo) //Requested from client side main.js
-
 module.exports = router

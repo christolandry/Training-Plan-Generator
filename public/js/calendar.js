@@ -285,6 +285,6 @@ $.extend(Date.prototype, {
   data.sort(function(a,b) { return (+a.start) - (+b.start); });
   
 //Actually do everything
-$('#holder').calendar({
+$('#header').calendar({
   data: data
 });
