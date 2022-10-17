@@ -146,23 +146,27 @@ table tbody tr{
 
 @media only screen and (max-device-width: 800px) and (orientation:portrait) { 
 	body {
-	        /* Rotate the content container */
+	    /* Rotate the content container */
 			transform: rotate(-90deg);
 			transform-origin: left top;
 			/* Set content width to viewport height */
 			width: 100vh;
       width: calc(var(--vh, 1vh) * 100);
 			/* Set content height to viewport width */
-			height: 100vw;
+			/* height: 100vw; */
       /* mobile viewport bug fix */
       /* height: -webkit-fill-available; */
 			
-      overflow-x: visible;
+      /* overflow-x: scroll; */
 			position: absolute;
 			top: 100%;
 			left: 0;
 	}
   
+  #main article {
+    position: relative;
+  }
+
 	#wrapper.calendarWrapper{
 		min-height: 100vw;
 		max-height: 100vw;
@@ -171,7 +175,6 @@ table tbody tr{
 	}
 	#main.plan article{
 		width: 90vh;
-		max-width: 1000px
 	}
   .calendar-table {
     margin: 0 auto;
@@ -180,6 +183,7 @@ table tbody tr{
   .calendarWrapper .container.theme-showcase{
     width: 20vh;
     width: calc(var(--vh, 1vh) * 85);
+    height: -webkit-fill-available;
     margin: auto;
   }
   .calendar-day{
