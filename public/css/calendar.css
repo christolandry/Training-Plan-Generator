@@ -154,7 +154,7 @@ table tbody tr{
 			/* Set content height to viewport width */
 			height: 100vw;
       /* mobile viewport bug fix */
-      min-height: -webkit-fill-available;
+      height: -webkit-fill-available;
 			
       overflow-x: visible;
 			position: absolute;
