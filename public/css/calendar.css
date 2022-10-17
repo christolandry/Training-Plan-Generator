@@ -153,11 +153,15 @@ table tbody tr{
 			width: 100vh;
 			/* Set content height to viewport width */
 			height: 100vw;
-			overflow-x: hidden;
+      /* mobile viewport bug fix */
+      min-height: -webkit-fill-available;
+			
+      overflow-x: visible;
 			position: absolute;
 			top: 100%;
 			left: 0;
 	}
+  
 	#wrapper.calendarWrapper{
 		min-height: 100vw;
 		max-height: 100vw;
