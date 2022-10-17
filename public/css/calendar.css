@@ -153,14 +153,15 @@ table tbody tr{
 			width: 100vh;
       width: calc(var(--vh, 1vh) * 100);
 			/* Set content height to viewport width */
-			/* height: 100vw; */
+			height: 100vw;
       /* mobile viewport bug fix */
       /* height: -webkit-fill-available; */
 			
       /* overflow-x: scroll; */
-			position: absolute;
+			/* position: absolute; */
 			top: 100%;
 			left: 0;
+  
 	}
   
   #main article {
@@ -184,6 +185,7 @@ table tbody tr{
     width: 20vh;
     width: calc(var(--vh, 1vh) * 85);
     height: -webkit-fill-available;
+    width: -webkit-fill-available;
     margin: auto;
   }
   .calendar-day{
