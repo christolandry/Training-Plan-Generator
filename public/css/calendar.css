@@ -178,7 +178,9 @@ table tbody tr{
     width: 100%;
   }
   .calendarWrapper .container.theme-showcase{
-    width: 85%;
+    width: 85vh;
+    width: calc(var(--vh, 1vh) * 85);
+    margin: auto;
   }
   .calendar-day{
     min-width: 14vw;
