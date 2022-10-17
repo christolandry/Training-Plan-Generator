@@ -179,7 +179,7 @@ table tbody tr{
   }
   .calendarWrapper .container.theme-showcase{
     width: 20vh;
-    width: calc(var(--vh, 1vh) * 50);
+    width: calc(var(--vh, 1vh) * 85);
     margin: auto;
   }
   .calendar-day{
