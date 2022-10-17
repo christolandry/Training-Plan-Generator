@@ -122,6 +122,10 @@ table tbody tr{
   font-size: 1em;
 }
 
+#wrapper .btn{
+  padding-top: 0;
+  padding-bottom: 0;
+}
 @media only screen and (max-width: 800px){
   .calendar-day{
     min-width: 14vh;
@@ -166,12 +170,16 @@ table tbody tr{
 	}
   .calendar-table {
     margin: 0 auto;
-    width: 85vh;
+    width: 100%;
   }
   .calendarWrapper .container.theme-showcase{
-    width: 100%;
+    width: 85%;
   }
   .calendar-day{
     min-width: 14vw;
+  }
+  .container{
+    margin: auto;
+    margin-bottom: 0;
   }
 }
