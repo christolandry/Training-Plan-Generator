@@ -158,7 +158,7 @@ table tbody tr{
       /* height: -webkit-fill-available; */
 			
       /* overflow-x: scroll; */
-			/* position: absolute; */
+			position: absolute;
 			top: 100%;
 			left: 0;
   
