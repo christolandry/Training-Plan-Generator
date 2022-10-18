@@ -1,14 +1,15 @@
 .calendar-day {
-  /* min-width: 100px; */
+  /* width: 100px; */
+  min-width: 100px;
+  /* max-width: 200px; */
   min-height: 80px;
   height: 100px;
-  /* max-height: 120px; */
-  min-width: 10vw;
+  max-height: 120px;
 }
 
 .calendar-table {
   margin: 0 auto;
-
+  width: 85vw;
 }
 .selected {
   background-color: #eee;
@@ -127,7 +128,7 @@ table tbody tr{
 }
 @media only screen and (max-width: 800px){
   .calendar-day{
-    min-width: 12vw;
+    min-width: 14vh;
   }
   .time-displayed{
     padding: .25em
@@ -144,21 +145,5 @@ table tbody tr{
 }
 
 @media only screen and (max-device-width: 800px) and (orientation:portrait) { 
-	.calendar-day{
-    min-width: 11vh;
-  }
-  /* .mobilePortrait{
-    display: flex;
-    flex-direction: column;
-  } */
-  /* table.calendar-table{
-    transform:rotate(270deg);
-    height: 55vh;
-  } */
-  .calendarWrapper .container{
-    transform:  translateX(-17%) rotate(-90deg);
-    /* transform:  translateX(-50%) translateY(-50%) rotate(-90deg); */
-    /* transform: rotate(-90deg); */
-    max-height: 50vh;
-  }
+	
 }
