@@ -2,10 +2,10 @@
 **A fullstack web app to automatically generate individually tailor training plans for runners**
 
 **Problem:** 
-Training plans for runners take a while to create when you're doing it by hand and thus cost more.  If I can automate the process custom training plans can become availble to a wider audicen due to the lower cost.
+Training plans for runners take a while to create when you're doing it by hand and thus cost more.  If I can automate the process custom training plans can become available to a wider audience due to the lower cost.
 
 **Solution:**
-Create a wesbite that allows people to register and create custom training plans for themselves based on a number of inputs including: start date, most miles in a week, longest long run, and average run pace.  Since users are registerd they may sign back in at any time to view their training plan.
+Create a website that allows people to register and create custom training plans for themselves based on a number of inputs including: start date, most miles in a week, longest long run, and average run pace.  Since users are registered they may sign back in at any time to view their training plan.
 
 **Link to project:** https://vercel.com/christolandry/ascent-running-training-plan-generator
 ![alt tag](trainingPlanGenerator.gif)
@@ -26,7 +26,7 @@ Create a wesbite that allows people to register and create custom training plans
 
 ## Lessons Learned:
 
-Creating a full-stack web app using JavaScript, Node.js, & Express.  Some of the more difficult parts were integrating the calendar into my webpage, adapting it to my needs, wrangling with dates (specically the timezones assciated with the dates), sending data from server-side JS to client-side JS to create the events on the calendar, and figuring out how to host a Node.js program on Vercel for the first time. I overcame these blockers through many google searches, a helpful discord sever, reading the documentation, and more than a little testing.
+Creating a full-stack web app using JavaScript, Node.js, & Express.  Some of the more difficult parts were integrating the calendar into my webpage, adapting it to my needs, wrangling with dates (specifically the time zones associated with the dates), sending data from server-side JS to client-side JS to create the events on the calendar, and figuring out how to host a Node.js program on Vercel for the first time. I overcame these blockers through many google searches, a helpful discord sever, reading the documentation, and more than a little testing.
 
 ## Optimizations:
 <ul>
